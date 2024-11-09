@@ -25,8 +25,12 @@ public class MainFrame extends JFrame {
 	private JPanel frmXuatKho;
 	private JPanel frmChuyenKho;
 
+	private JPanel frmNhapKhoReport;
+	private JPanel frmXuatKhoReport;
+	private JPanel frmChuyenKhoReport;
+
 	public MainFrame(DatabaseManager dbManager, String username) {
-		
+
 		// Thiết lập Title cho screen
 		setTitle("Quản lý Kho hàng");
 
@@ -115,6 +119,21 @@ public class MainFrame extends JFrame {
 		mnThongke.setFont(new Font("Arial", Font.PLAIN, 14));
 		menuBar.add(mnThongke);
 
+		JMenuItem mnTkNhapKho = new JMenuItem("Thống kê Nhập kho");
+		mnTkNhapKho.setForeground(Color.BLACK);
+		mnTkNhapKho.setFont(new Font("Arial", Font.PLAIN, 14));
+		mnThongke.add(mnTkNhapKho);
+
+		JMenuItem mnTkXuatKho = new JMenuItem("Thống kê Xuất kho");
+		mnTkXuatKho.setForeground(Color.BLACK);
+		mnTkXuatKho.setFont(new Font("Arial", Font.PLAIN, 14));
+		mnThongke.add(mnTkXuatKho);
+
+		JMenuItem mnTkChuyenKho = new JMenuItem("Thống kê Chuyển kho");
+		mnTkChuyenKho.setForeground(Color.BLACK);
+		mnTkChuyenKho.setFont(new Font("Arial", Font.PLAIN, 14));
+		mnThongke.add(mnTkChuyenKho);
+
 		// Khởi tạo các frame con
 		frmTrangChu = new frmTrangChu(dbManager, username);
 		frmNhanVien = new frmNhanVien(dbManager);
@@ -124,6 +143,10 @@ public class MainFrame extends JFrame {
 		frmNhapKho = new frmNhapKho(dbManager);
 		frmXuatKho = new frmXuatKho(dbManager);
 		frmChuyenKho = new frmChuyenKho(dbManager);
+
+		frmNhapKhoReport = new frmNhapKhoReport(dbManager);
+		frmXuatKhoReport = new frmXuatKhoReport(dbManager);
+		frmChuyenKhoReport = new frmChuyenKhoReport(dbManager);
 
 		// Thêm các frame vào contentPane với tên cụ thể
 		contentPane.add(frmTrangChu, "frmTrangChu");
@@ -135,6 +158,10 @@ public class MainFrame extends JFrame {
 		contentPane.add(frmXuatKho, "frmXuatKho");
 		contentPane.add(frmChuyenKho, "frmChuyenKho");
 
+		contentPane.add(frmNhapKhoReport, "frmNhapKhoReport");
+		contentPane.add(frmXuatKhoReport, "frmXuatKhoReport");
+		contentPane.add(frmChuyenKhoReport, "frmChuyenKhoReport");
+
 		// Đặt lệnh gọi showPanel khi menu được chọn
 		mnTrangChu.addMenuListener(new MenuListenerAdapter(() -> showPanel("frmTrangChu")));
 		mnNhanVien.addActionListener(e -> showPanel("frmNhanVien"));
@@ -145,8 +172,12 @@ public class MainFrame extends JFrame {
 		mnXuatKho.addActionListener(e -> showPanel("frmXuatKho"));
 		mnChuyenKho.addActionListener(e -> showPanel("frmChuyenKho"));
 
+		mnTkNhapKho.addActionListener(e -> showPanel("frmNhapKhoReport"));
+		mnTkXuatKho.addActionListener(e -> showPanel("frmXuatKhoReport"));
+		mnTkChuyenKho.addActionListener(e -> showPanel("frmChuyenKhoReport"));
+
 		// Thêm contentPane vào MainFrame
-		add(contentPane);
+		getContentPane().add(contentPane);
 
 	}
 
@@ -156,24 +187,26 @@ public class MainFrame extends JFrame {
 		cl.show(contentPane, panelName);
 
 	}
-	
-    // Lớp adapter cho MenuListener để xử lý sự kiện chọn menu
-    private static class MenuListenerAdapter implements javax.swing.event.MenuListener {
-        private final Runnable action;
 
-        public MenuListenerAdapter(Runnable action) {
-            this.action = action;
-        }
+	// Lớp adapter cho MenuListener để xử lý sự kiện chọn menu
+	private static class MenuListenerAdapter implements javax.swing.event.MenuListener {
+		private final Runnable action;
 
-        @Override
-        public void menuSelected(javax.swing.event.MenuEvent e) {
-            action.run();
-        }
+		public MenuListenerAdapter(Runnable action) {
+			this.action = action;
+		}
 
-        @Override
-        public void menuDeselected(javax.swing.event.MenuEvent e) { }
+		@Override
+		public void menuSelected(javax.swing.event.MenuEvent e) {
+			action.run();
+		}
 
-        @Override
-        public void menuCanceled(javax.swing.event.MenuEvent e) { }
-    }
+		@Override
+		public void menuDeselected(javax.swing.event.MenuEvent e) {
+		}
+
+		@Override
+		public void menuCanceled(javax.swing.event.MenuEvent e) {
+		}
+	}
 }

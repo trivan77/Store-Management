@@ -14,7 +14,7 @@ public class Main {
 			dbManager.initializeSampleData(); // Gọi phương thức khởi tạo dữ liệu mẫu
 
 			// Gọi screen Đăng nhập
-			// frmDangNhap frame = new frmDangNhap(dbManager);
+			 //frmDangNhap frame = new frmDangNhap(dbManager);
 
 			// Gọi screen Đăng nhập
 			MainFrame frame = new MainFrame(dbManager, "admin");
