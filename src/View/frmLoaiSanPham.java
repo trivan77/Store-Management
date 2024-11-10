@@ -29,7 +29,7 @@ public class frmLoaiSanPham extends JPanel {
 	public frmLoaiSanPham(DatabaseManager dbManager) {
 
 		// Truyền dữ liệu vào Controller
-		this.controller = new ctlLoaiSanPham(dbManager.getDb()); // Pass db 
+		this.controller = new ctlLoaiSanPham(dbManager.getDb()); // Pass db
 
 		// Tạo Form
 		createFormPanel();
@@ -42,7 +42,7 @@ public class frmLoaiSanPham extends JPanel {
 	private void createFormPanel() {
 		// Tạo đường viền với tiêu đề, phông chữ và màu sắc tùy chỉnh
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 10, 415, 171);
+		panel.setBounds(10, 68, 415, 171);
 		panel.setBorder(BorderFactory.createTitledBorder("Tìm kiếm:"));
 		add(panel);
 		panel.setLayout(null);
@@ -82,7 +82,7 @@ public class frmLoaiSanPham extends JPanel {
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
-		panel_1.setBounds(435, 10, 546, 171);
+		panel_1.setBounds(435, 68, 546, 171);
 		panel_1.setBorder(BorderFactory.createTitledBorder("Thông tin chi tiết:"));
 		add(panel_1);
 
@@ -167,7 +167,7 @@ public class frmLoaiSanPham extends JPanel {
 		setLayout(null);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 191, 971, 401);
+		scrollPane.setBounds(10, 249, 971, 401);
 		add(scrollPane);
 
 		String[] columnNames = { "Loại sản phẩm", "Tên loại sản phẩm", "Mô tả" };
@@ -182,6 +182,11 @@ public class frmLoaiSanPham extends JPanel {
 		table.getColumnModel().getColumn(1).setPreferredWidth(150);
 		table.getColumnModel().getColumn(2).setPreferredWidth(147);
 		scrollPane.setViewportView(table);
+		
+		JLabel lblQunLLoi = new JLabel("QUẢN LÝ LOẠI SẢN PHẨM");
+		lblQunLLoi.setFont(new Font("Arial", Font.PLAIN, 30));
+		lblQunLLoi.setBounds(10, 10, 684, 49);
+		add(lblQunLLoi);
 
 		// Thêm hiệu ứng zebra
 		table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
@@ -230,7 +235,7 @@ public class frmLoaiSanPham extends JPanel {
 
 		// Thêm các hàng mới vào bảng
 		for (LoaiSanPham object : loaiSanPhamList) {
-			model.addRow(new Object[] { object.getLoaisp(), object.getTenloai(), object.getMota() });
+			model.addRow(new Object[] { object.getLoaiSp(), object.getTenLoai(), object.getMoTa() });
 			// System.out.println(object.toString());
 		}
 	}

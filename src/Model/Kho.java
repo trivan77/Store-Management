@@ -3,44 +3,44 @@ package Model;
 public class Kho {
 
 	// Các thuộc tính
-	private String Makho; // Mã kho (Primary Key)
-	private String Tenkho; // Tên kho
-	private String Diachi; // Địa chỉ
+	private String maKho; // Mã kho (Primary Key)
+	private String tenKho; // Tên kho
+	private String diaChi; // Địa chỉ
 
 	// Constructor
-	public Kho(String Makho, String Tenkho, String Diachi) {
-		this.Makho = Makho;
-		this.Tenkho = Tenkho;
-		this.Diachi = Diachi;
+	public Kho(String maKho, String tenKho, String diaChi) {
+		this.maKho = maKho;
+		this.tenKho = tenKho;
+		this.diaChi = diaChi;
 	}
 
 	// Getters và Setters
-	public String getMakho() {
-		return Makho;
+	public String getMaKho() {
+		return maKho;
 	}
 
-	public void setMakho(String Makho) {
-		this.Makho = Makho;
+	public void setMaKho(String maKho) {
+		this.maKho = maKho;
 	}
 
-	public String getTenkho() {
-		return Tenkho;
+	public String getTenKho() {
+		return tenKho;
 	}
 
-	public void setTenkho(String Tenkho) {
-		this.Tenkho = Tenkho;
+	public void setTenKho(String tenKho) {
+		this.tenKho = tenKho;
 	}
 
-	public String getDiachi() {
-		return Diachi;
+	public String getDiaChi() {
+		return diaChi;
 	}
 
-	public void setDiachi(String Diachi) {
-		this.Diachi = Diachi;
+	public void setDiaChi(String diaChi) {
+		this.diaChi = diaChi;
 	}
 
 	@Override
 	public String toString() {
-		return "Kho{" + "Makho='" + Makho + '\'' + ", Tenkho='" + Tenkho + '\'' + ", Diachi='" + Diachi + '\'' + '}';
+		return "Kho{" + "maKho='" + maKho + '\'' + ", tenKho='" + tenKho + '\'' + ", diaChi='" + diaChi + '\'' + '}';
 	}
 }

@@ -24,12 +24,12 @@ public class ctlTkXuatKho {
 		// Thực hiện truy vấn
 		List<PhieuXuat> listPhieuXuat = getPhieuXuat(Mapn, Makho, Manv, fromDate, toDate);
 		for (PhieuXuat phieuXuat : listPhieuXuat) {
-			List<ChiTietPhieuXuat> listChiTietPhieuXuat = getChiTietPhieuXuat(phieuXuat.getMapx(), Masp);
+			List<ChiTietPhieuXuat> listChiTietPhieuXuat = getChiTietPhieuXuat(phieuXuat.getMaPx(), Masp);
 
 			for (ChiTietPhieuXuat chitiet : listChiTietPhieuXuat) {
-				KhoReport record = new KhoReport(phieuXuat.getMapx(), chitiet.getMasp(), chitiet.getTensp(),
-						chitiet.getDongia(), chitiet.getDonvitinh(), chitiet.getSoluong(), chitiet.getThanhtien(),
-						phieuXuat.getManv(), phieuXuat.getNgayxuat(), phieuXuat.getMakho(), phieuXuat.getTongtien(),
+				KhoReport record = new KhoReport(phieuXuat.getMaPx(), chitiet.getMaSp(), chitiet.getTenSp(),
+						chitiet.getDonGia(), chitiet.getDonViTinh(), chitiet.getSoLuong(), chitiet.getThanhTien(),
+						phieuXuat.getMaNv(), phieuXuat.getNgayXuat(), phieuXuat.getMaKho(), phieuXuat.getTongTien(),
 						null, null, null, null, null);
 				listReport.add(record);
 			}

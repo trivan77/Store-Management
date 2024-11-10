@@ -57,7 +57,7 @@ public class frmKho extends JPanel {
 	private void createFormPanel() {
 		// Tạo đường viền với tiêu đề, phông chữ và màu sắc tùy chỉnh
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 10, 415, 205);
+		panel.setBounds(10, 62, 415, 205);
 		panel.setBorder(BorderFactory.createTitledBorder("Tìm kiếm:"));
 		add(panel);
 		panel.setLayout(null);
@@ -106,7 +106,7 @@ public class frmKho extends JPanel {
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
-		panel_1.setBounds(435, 10, 546, 205);
+		panel_1.setBounds(435, 62, 546, 205);
 		panel_1.setBorder(BorderFactory.createTitledBorder("Thông tin chi tiết:"));
 		add(panel_1);
 
@@ -189,7 +189,7 @@ public class frmKho extends JPanel {
 		setLayout(null);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 285, 971, 401);
+		scrollPane.setBounds(10, 267, 971, 401);
 		add(scrollPane);
 
 		String[] columnNames = { "Mã kho", "Tên kho", "Địa chỉ" };
@@ -204,6 +204,11 @@ public class frmKho extends JPanel {
 		table.getColumnModel().getColumn(1).setPreferredWidth(150);
 		table.getColumnModel().getColumn(2).setPreferredWidth(147);
 		scrollPane.setViewportView(table);
+		
+		JLabel lblQunLKho = new JLabel("QUẢN LÝ KHO");
+		lblQunLKho.setFont(new Font("Arial", Font.PLAIN, 30));
+		lblQunLKho.setBounds(10, 10, 684, 49);
+		add(lblQunLKho);
 
 		// Thêm hiệu ứng zebra
 		table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
@@ -252,7 +257,7 @@ public class frmKho extends JPanel {
 
 		// Thêm các hàng mới vào bảng
 		for (Kho object : resrulList) {
-			model.addRow(new Object[] { object.getMakho(), object.getTenkho(), object.getDiachi() });
+			model.addRow(new Object[] { object.getMaKho(), object.getTenKho(), object.getDiaChi() });
 			// System.out.println(object.toString());
 		}
 	}

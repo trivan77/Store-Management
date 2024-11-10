@@ -1,46 +1,46 @@
 package Model;
 
 public class LoaiSanPham {
-	private String Loaisp; // Loại sản phẩm - Primary Key, not null
-	private String Tenloai; // Tên loại sản phẩm - nullable
-	private String Mota; // Mô tả - nullable
+	private String loaiSp; // Loại sản phẩm - Primary Key, not null
+	private String tenLoai; // Tên loại sản phẩm - nullable
+	private String moTa; // Mô tả - nullable
 
 	// Constructor
-	public LoaiSanPham(String Loaisp, String Tenloai, String Mota) {
-		this.Loaisp = Loaisp;
-		this.Tenloai = Tenloai;
-		this.Mota = Mota;
-	} 
+	public LoaiSanPham(String loaiSp, String tenLoai, String moTa) {
+		this.loaiSp = loaiSp;
+		this.tenLoai = tenLoai;
+		this.moTa = moTa;
+	}
 
 	// Getters và Setters cho từng thuộc tính
 
-	public String getLoaisp() {
-		return Loaisp;
-	}
- 
-	public void setLoaisp(String Loaisp) {
-		this.Loaisp = Loaisp;
+	public String getLoaiSp() {
+		return loaiSp;
 	}
 
-	public String getTenloai() {
-		return Tenloai;
+	public void setLoaiSp(String loaiSp) {
+		this.loaiSp = loaiSp;
 	}
 
-	public void setTenloai(String Tenloai) {
-		this.Tenloai = Tenloai;
+	public String getTenLoai() {
+		return tenLoai;
 	}
 
-	public String getMota() {
-		return Mota;
+	public void setTenLoai(String tenLoai) {
+		this.tenLoai = tenLoai;
 	}
 
-	public void setMota(String Mota) {
-		this.Mota = Mota;
+	public String getMoTa() {
+		return moTa;
+	}
+
+	public void setMoTa(String moTa) {
+		this.moTa = moTa;
 	}
 
 	@Override
 	public String toString() {
-		return "LoaiSanPham{" + "Loaisp='" + Loaisp + '\'' + ", Tenloai='" + Tenloai + '\'' + ", Mota='" + Mota + '\''
+		return "LoaiSanPham{" + "loaiSp='" + loaiSp + '\'' + ", tenLoai='" + tenLoai + '\'' + ", moTa='" + moTa + '\''
 				+ '}';
 	}
 }

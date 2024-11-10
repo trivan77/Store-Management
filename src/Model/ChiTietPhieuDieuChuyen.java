@@ -3,90 +3,90 @@ package Model;
 public class ChiTietPhieuDieuChuyen {
 
 	// Các thuộc tính
-	private String Mapdc; // Mã phiếu điều chuyển (Primary Key)
-	private String Masp; // Mã sản phẩm
-	private String Tensp; // Tên sản phẩm
-	private float Dongia; // Đơn giá
-	private String Donvitinh; // Đơn vị tính
-	private int Soluong; // Số lượng
-	private float Thanhtien; // Thành tiền
+	private String maPdc; // Mã phiếu điều chuyển (Primary Key)
+	private String maSp; // Mã sản phẩm
+	private String tenSp; // Tên sản phẩm
+	private float donGia; // Đơn giá
+	private String donViTinh; // Đơn vị tính
+	private int soLuong; // Số lượng
+	private float thanhTien; // Thành tiền
 
 	// Constructor
-	public ChiTietPhieuDieuChuyen(String Mapdc, String Masp, String Tensp, float Dongia, String Donvitinh,
-			int Soluong) {
-		this.Mapdc = Mapdc;
-		this.Masp = Masp;
-		this.Tensp = Tensp;
-		this.Dongia = Dongia;
-		this.Donvitinh = Donvitinh;
-		this.Soluong = Soluong;
-		this.Thanhtien = calculateThanhtien(); // Tính thành tiền khi khởi tạo
+	public ChiTietPhieuDieuChuyen(String maPdc, String maSp, String tenSp, float donGia, String donViTinh,
+			int soLuong) {
+		this.maPdc = maPdc;
+		this.maSp = maSp;
+		this.tenSp = tenSp;
+		this.donGia = donGia;
+		this.donViTinh = donViTinh;
+		this.soLuong = soLuong;
+		this.thanhTien = calculateThanhTien(); // Tính thành tiền khi khởi tạo
 	}
 
 	// Phương thức tính thành tiền
-	private float calculateThanhtien() {
-		return this.Dongia * this.Soluong;
+	private float calculateThanhTien() {
+		return this.donGia * this.soLuong;
 	}
 
 	// Getters và Setters
-	public String getMapdc() {
-		return Mapdc;
+	public String getMaPdc() {
+		return maPdc;
 	}
 
-	public void setMapdc(String Mapdc) {
-		this.Mapdc = Mapdc;
+	public void setMaPdc(String maPdc) {
+		this.maPdc = maPdc;
 	}
 
-	public String getMasp() {
-		return Masp;
+	public String getMaSp() {
+		return maSp;
 	}
 
-	public void setMasp(String Masp) {
-		this.Masp = Masp;
+	public void setMaSp(String maSp) {
+		this.maSp = maSp;
 	}
 
-	public String getTensp() {
-		return Tensp;
+	public String getTenSp() {
+		return tenSp;
 	}
 
-	public void setTensp(String Tensp) {
-		this.Tensp = Tensp;
+	public void setTenSp(String tenSp) {
+		this.tenSp = tenSp;
 	}
 
-	public float getDongia() {
-		return Dongia;
+	public float getDonGia() {
+		return donGia;
 	}
 
-	public void setDongia(float Dongia) {
-		this.Dongia = Dongia;
-		this.Thanhtien = calculateThanhtien(); // Cập nhật thành tiền khi đơn giá thay đổi
+	public void setDonGia(float donGia) {
+		this.donGia = donGia;
+		this.thanhTien = calculateThanhTien(); // Cập nhật thành tiền khi đơn giá thay đổi
 	}
 
-	public String getDonvitinh() {
-		return Donvitinh;
+	public String getDonViTinh() {
+		return donViTinh;
 	}
 
-	public void setDonvitinh(String Donvitinh) {
-		this.Donvitinh = Donvitinh;
+	public void setDonViTinh(String donViTinh) {
+		this.donViTinh = donViTinh;
 	}
 
-	public int getSoluong() {
-		return Soluong;
+	public int getSoLuong() {
+		return soLuong;
 	}
 
-	public void setSoluong(int Soluong) {
-		this.Soluong = Soluong;
-		this.Thanhtien = calculateThanhtien(); // Cập nhật thành tiền khi số lượng thay đổi
+	public void setSoLuong(int soLuong) {
+		this.soLuong = soLuong;
+		this.thanhTien = calculateThanhTien(); // Cập nhật thành tiền khi số lượng thay đổi
 	}
 
-	public float getThanhtien() {
-		return Thanhtien;
+	public float getThanhTien() {
+		return thanhTien;
 	}
 
 	@Override
 	public String toString() {
-		return "ChiTietPhieuDieuChuyen{" + "Mapdc='" + Mapdc + '\'' + ", Masp='" + Masp + '\'' + ", Tensp='" + Tensp
-				+ '\'' + ", Dongia=" + Dongia + ", Donvitinh='" + Donvitinh + '\'' + ", Soluong=" + Soluong
-				+ ", Thanhtien=" + Thanhtien + '}';
+		return "ChiTietPhieuDieuChuyen{" + "maPdc='" + maPdc + '\'' + ", maSp='" + maSp + '\'' + ", tenSp='" + tenSp
+				+ '\'' + ", donGia=" + donGia + ", donViTinh='" + donViTinh + '\'' + ", soLuong=" + soLuong
+				+ ", thanhTien=" + thanhTien + '}';
 	}
 }

@@ -20,7 +20,7 @@ public class ctlKho {
 	}
 
 	// Lấy danh sách Kho
-	public List<Kho> layDanhSach(String Makho, String Tenkho, String Diachi) {
+	public List<Kho> layDanhSach(String maKho, String tenKho, String diaChi) {
 		List<Kho> listKho = new ArrayList<>();
 
 		// Tạo truy vấn SODA
@@ -28,20 +28,20 @@ public class ctlKho {
 		query.constrain(Kho.class);
 
 		// Thêm điều kiện
-		if (Makho != null && !Makho.isEmpty()) {
-		    query.descend("Makho").constrain(Makho);
+		if (maKho != null && !maKho.isEmpty()) {
+			query.descend("maKho").constrain(maKho);
 		}
 
-		if (Tenkho != null && !Tenkho.isEmpty()) {
-			query.descend("Tenkho").constrain(Tenkho);
+		if (tenKho != null && !tenKho.isEmpty()) {
+			query.descend("tenKho").constrain(tenKho);
 		}
 
-		if (Diachi != null && !Diachi.isEmpty()) {
-			query.descend("Diachi").constrain(Diachi);
+		if (diaChi != null && !diaChi.isEmpty()) {
+			query.descend("diaChi").constrain(diaChi);
 		}
 
 		// Thêm sắp xếp tăng dần
-		query.descend("Makho").orderAscending();
+		query.descend("maKho").orderAscending();
 
 		// Thực hiện truy vấn
 		try {
@@ -60,12 +60,12 @@ public class ctlKho {
 	}
 
 	// Thêm
-	public boolean add(String Makho, String Tenkho, String Diachi) {
+	public boolean add(String maKho, String tenKho, String diaChi) {
 		// Lấy dữ liệu
-		Kho kho = getKho(Makho);
+		Kho kho = getKho(maKho);
 
 		// Kiểm tra dữ liệu
-		if (Makho == null || Makho.isEmpty()) {
+		if (maKho == null || maKho.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Vui lòng nhập Mã kho");
 			return false;
 		}
@@ -79,7 +79,7 @@ public class ctlKho {
 				JOptionPane.YES_NO_OPTION);
 		if (response == JOptionPane.YES_OPTION) {
 			// Lưu lại thay đổi
-			db.store(new Kho(Makho, Tenkho, Diachi));
+			db.store(new Kho(maKho, tenKho, diaChi));
 			return true;
 		}
 
@@ -87,12 +87,12 @@ public class ctlKho {
 	}
 
 	// Sửa
-	public boolean edit(String Makho, String Tenkho, String Diachi) {
+	public boolean edit(String maKho, String tenKho, String diaChi) {
 		// Lấy dữ liệu
-		Kho kho = getKho(Makho);
+		Kho kho = getKho(maKho);
 
 		// Kiểm tra dữ liệu
-		if (Makho == null || Makho.isEmpty()) {
+		if (maKho == null || maKho.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Vui lòng nhập Mã kho");
 			return false;
 		}
@@ -106,9 +106,9 @@ public class ctlKho {
 				JOptionPane.YES_NO_OPTION);
 		if (response == JOptionPane.YES_OPTION) {
 			// Cập nhật thông tin
-			kho.setMakho(Makho);
-			kho.setTenkho(Tenkho);
-			kho.setDiachi(Diachi);
+			kho.setMaKho(maKho);
+			kho.setTenKho(tenKho);
+			kho.setDiaChi(diaChi);
 
 			// Lưu lại thay đổi
 			db.store(kho);
@@ -119,15 +119,15 @@ public class ctlKho {
 	}
 
 	// Xóa
-	public boolean del(String Makho) {
+	public boolean del(String maKho) {
 		// Lấy dữ liệu
-		Kho kho = getKho(Makho);
-		PhieuXuat xuat = getPhieuXuat(Makho);
-		PhieuNhap nhap = getPhieuNhap(Makho);
-		PhieuDieuChuyen dieuchuyen = getPhieuDieuChuyen(Makho);
+		Kho kho = getKho(maKho);
+		PhieuXuat xuat = getPhieuXuat(maKho);
+		PhieuNhap nhap = getPhieuNhap(maKho);
+		PhieuDieuChuyen dieuchuyen = getPhieuDieuChuyen(maKho);
 
 		// Kiểm tra dữ liệu
-		if (Makho == null || Makho.isEmpty()) {
+		if (maKho == null || maKho.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Vui lòng nhập Mã kho");
 			return false;
 		}
@@ -150,41 +150,41 @@ public class ctlKho {
 	}
 
 	// Tìm Kho
-	private Kho getKho(String Makho) {
+	private Kho getKho(String maKho) {
 		// Tạo truy vấn SODA
 		Query query = db.query();
 		query.constrain(Kho.class);
-		query.descend("Makho").constrain(Makho);
+		query.descend("maKho").constrain(maKho);
 		ObjectSet<Kho> result = query.execute();
 		return result.hasNext() ? result.next() : null;
 	}
 
 	// PhieuNhap
-	private PhieuNhap getPhieuNhap(String Makho) {
+	private PhieuNhap getPhieuNhap(String maKho) {
 		// Tạo truy vấn SODA
 		Query query = db.query();
 		query.constrain(PhieuNhap.class);
-		query.descend("Makho").constrain(Makho);
+		query.descend("maKho").constrain(maKho);
 		ObjectSet<PhieuNhap> result = query.execute();
 		return result.hasNext() ? result.next() : null;
 	}
 
 	// Tìm PhieuXuat
-	private PhieuXuat getPhieuXuat(String Makho) {
+	private PhieuXuat getPhieuXuat(String maKho) {
 		// Tạo truy vấn SODA
 		Query query = db.query();
 		query.constrain(PhieuXuat.class);
-		query.descend("Makho").constrain(Makho);
+		query.descend("maKho").constrain(maKho);
 		ObjectSet<PhieuXuat> result = query.execute();
 		return result.hasNext() ? result.next() : null;
 	}
 
 	// Tìm PhieuDieuChuyen
-	private PhieuDieuChuyen getPhieuDieuChuyen(String Makho) {
+	private PhieuDieuChuyen getPhieuDieuChuyen(String maKho) {
 		// Tạo truy vấn SODA
 		Query query = db.query();
 		query.constrain(PhieuDieuChuyen.class);
-		query.descend("Makho").constrain(Makho);
+		query.descend("maKho").constrain(maKho);
 		ObjectSet<PhieuDieuChuyen> result = query.execute();
 		return result.hasNext() ? result.next() : null;
 	}

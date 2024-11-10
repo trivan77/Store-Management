@@ -1,101 +1,100 @@
 package Model;
 
 public class NhanVien {
-	private String Manv; // Mã nhân viên - Primary Key
-	private String Tennv; // Tên nhân viên
-	private String Gioitinh; // Giới tính
-	private String Dienthoai; // Điện thoại
-	private String Diachi; // Địa chỉ
-	private String Socmnd; // Số CMND
-	private String Chucvu; // Chức vụ
-	private String Matkhau; // Mật khẩu
+	private String maNv; // Mã nhân viên - Primary Key
+	private String tenNv; // Tên nhân viên
+	private String gioiTinh; // Giới tính
+	private String dienThoai; // Điện thoại
+	private String diaChi; // Địa chỉ
+	private String soCmnd; // Số CMND
+	private String chucVu; // Chức vụ
+	private String matKhau; // Mật khẩu
 
 	// Constructor
-	public NhanVien(String Manv, String Tennv, String Gioitinh, String Dienthoai, String Diachi, String Socmnd,
-			String Chucvu, String Matkhau) {
-		this.Manv = Manv;
-		this.Tennv = Tennv;
-		this.Gioitinh = Gioitinh;
-		this.Dienthoai = Dienthoai;
-		this.Diachi = Diachi;
-		this.Socmnd = Socmnd;
-		this.Chucvu = Chucvu;
-		this.Matkhau = Matkhau;
+	public NhanVien(String maNv, String tenNv, String gioiTinh, String dienThoai, String diaChi, String soCmnd,
+			String chucVu, String matKhau) {
+		this.maNv = maNv;
+		this.tenNv = tenNv;
+		this.gioiTinh = gioiTinh;
+		this.dienThoai = dienThoai;
+		this.diaChi = diaChi;
+		this.soCmnd = soCmnd;
+		this.chucVu = chucVu;
+		this.matKhau = matKhau;
 	}
 
 	public NhanVien() {
 	}
 
 	// Getters và Setters cho từng thuộc tính
-
-	public String getManv() {
-		return Manv;
+	public String getMaNv() {
+		return maNv;
 	}
 
-	public void setManv(String Manv) {
-		this.Manv = Manv;
+	public void setMaNv(String maNv) {
+		this.maNv = maNv;
 	}
 
-	public String getTennv() {
-		return Tennv;
+	public String getTenNv() {
+		return tenNv;
 	}
 
-	public void setTennv(String Tennv) {
-		this.Tennv = Tennv;
+	public void setTenNv(String tenNv) {
+		this.tenNv = tenNv;
 	}
 
-	public String getGioitinh() {
-		return Gioitinh;
+	public String getGioiTinh() {
+		return gioiTinh;
 	}
 
-	public void setGioitinh(String Gioitinh) {
-		this.Gioitinh = Gioitinh;
+	public void setGioiTinh(String gioiTinh) {
+		this.gioiTinh = gioiTinh;
 	}
 
-	public String getDienthoai() {
-		return Dienthoai;
+	public String getDienThoai() {
+		return dienThoai;
 	}
 
-	public void setDienthoai(String Dienthoai) {
-		this.Dienthoai = Dienthoai;
+	public void setDienThoai(String dienThoai) {
+		this.dienThoai = dienThoai;
 	}
 
-	public String getDiachi() {
-		return Diachi;
+	public String getDiaChi() {
+		return diaChi;
 	}
 
-	public void setDiachi(String Diachi) {
-		this.Diachi = Diachi;
+	public void setDiaChi(String diaChi) {
+		this.diaChi = diaChi;
 	}
 
-	public String getSocmnd() {
-		return Socmnd;
+	public String getSoCmnd() {
+		return soCmnd;
 	}
 
-	public void setSocmnd(String Socmnd) {
-		this.Socmnd = Socmnd;
+	public void setSoCmnd(String soCmnd) {
+		this.soCmnd = soCmnd;
 	}
 
-	public String getChucvu() {
-		return Chucvu;
+	public String getChucVu() {
+		return chucVu;
 	}
 
-	public void setChucvu(String Chucvu) {
-		this.Chucvu = Chucvu;
+	public void setChucVu(String chucVu) {
+		this.chucVu = chucVu;
 	}
 
-	public String getMatkhau() {
-		return Matkhau;
+	public String getMatKhau() {
+		return matKhau;
 	}
 
-	public void setMatkhau(String Matkhau) {
-		this.Matkhau = Matkhau;
+	public void setMatKhau(String matKhau) {
+		this.matKhau = matKhau;
 	}
 
 	@Override
 	public String toString() {
-		return "NhanVien{" + "Manv='" + Manv + '\'' + ", Tennv='" + Tennv + '\'' + ", Gioitinh='" + Gioitinh + '\''
-				+ ", Dienthoai=" + Dienthoai + ", Diachi='" + Diachi + '\'' + ", Socmnd=" + Socmnd + ", Chucvu='"
-				+ Chucvu + '\'' + ", Matkhau='" + Matkhau + '\'' + '}';
+		return "NhanVien{" + "maNv='" + maNv + '\'' + ", tenNv='" + tenNv + '\'' + ", gioiTinh='" + gioiTinh + '\''
+				+ ", dienThoai=" + dienThoai + ", diaChi='" + diaChi + '\'' + ", soCmnd=" + soCmnd + ", chucVu='"
+				+ chucVu + '\'' + ", matKhau='" + matKhau + '\'' + '}';
 	}
 }

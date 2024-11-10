@@ -19,15 +19,15 @@ public class ctlLayDanhSachPhieu {
 	}
 
 	// Kho
-	public List<Kho> getKho(String Makho, String Tenkho) {
+	public List<Kho> getKho(String maKho, String Tenkho) {
 		List<Kho> listResult = new ArrayList<>();
 		// Tạo truy vấn SODA
 		Query query = db.query();
 		query.constrain(Kho.class);
 
 		// Thêm điều kiện
-		if (Makho != null && !Makho.isEmpty()) {
-			query.descend("Makho").constrain(Makho);
+		if (maKho != null && !maKho.isEmpty()) {
+			query.descend("maKho").constrain(maKho);
 		}
 
 		if (Tenkho != null && !Tenkho.isEmpty()) {
@@ -50,7 +50,7 @@ public class ctlLayDanhSachPhieu {
 	}
 
 	// SanPham
-	public List<SanPham> getSanPham(String Masp, String Tensp) {
+	public List<SanPham> getSanPham(String maSp, String Tensp) {
 		List<SanPham> listResult = new ArrayList<>();
 
 		// Tạo truy vấn SODA
@@ -58,8 +58,8 @@ public class ctlLayDanhSachPhieu {
 		query.constrain(SanPham.class);
 
 		// Thêm điều kiện
-		if (Masp != null && !Masp.isEmpty()) {
-			query.descend("Masp").constrain(Masp);
+		if (maSp != null && !maSp.isEmpty()) {
+			query.descend("maSp").constrain(maSp);
 		}
 
 		if (Tensp != null && !Tensp.isEmpty()) {
@@ -81,10 +81,8 @@ public class ctlLayDanhSachPhieu {
 		return listResult;
 	}
 
-	
-
 	// PhieuXuat
-	public List<PhieuXuat> getPhieuXuat(String Mapx, String Makho, String Manv, Date fromDate, Date toDate) {
+	public List<PhieuXuat> getPhieuXuat(String Mapx, String maKho, String Manv, Date fromDate, Date toDate) {
 		List<PhieuXuat> listResult = new ArrayList<>();
 
 		// Tạo truy vấn SODA
@@ -96,8 +94,8 @@ public class ctlLayDanhSachPhieu {
 			query.descend("Mapx").constrain(Mapx);
 		}
 
-		if (Makho != null && !Makho.isEmpty()) {
-			query.descend("Makho").constrain(Makho);
+		if (maKho != null && !maKho.isEmpty()) {
+			query.descend("maKho").constrain(maKho);
 		}
 
 		if (Manv != null && !Manv.isEmpty()) {
@@ -128,7 +126,7 @@ public class ctlLayDanhSachPhieu {
 	}
 
 	// ChiTietPhieuXuat
-	public List<ChiTietPhieuXuat> getChiTietPhieuXuat(String Mapx, String Masp) {
+	public List<ChiTietPhieuXuat> getChiTietPhieuXuat(String Mapx, String maSp) {
 		List<ChiTietPhieuXuat> listResult = new ArrayList<>();
 
 		// Tạo truy vấn SODA
@@ -140,8 +138,8 @@ public class ctlLayDanhSachPhieu {
 			query.descend("Mapx").constrain(Mapx);
 		}
 
-		if (Masp != null && !Masp.isEmpty()) {
-			query.descend("Masp").constrain(Masp);
+		if (maSp != null && !maSp.isEmpty()) {
+			query.descend("maSp").constrain(maSp);
 		}
 
 		// Thực hiện truy vấn
@@ -160,7 +158,7 @@ public class ctlLayDanhSachPhieu {
 	}
 
 	// PhieuDieuChuyen
-	public List<PhieuDieuChuyen> getPhieuDieuChuyen(String Mapdc, String Makho, Date fromDate, Date toDate) {
+	public List<PhieuDieuChuyen> getPhieuDieuChuyen(String maPdc, String maKho, Date fromDate, Date toDate) {
 		List<PhieuDieuChuyen> listResult = new ArrayList<>();
 
 		// Tạo truy vấn SODA
@@ -168,20 +166,20 @@ public class ctlLayDanhSachPhieu {
 		query.constrain(PhieuDieuChuyen.class);
 
 		// Thêm điều kiện
-		if (Mapdc != null && !Mapdc.isEmpty()) {
-			query.descend("Mapdc").constrain(Mapdc);
+		if (maPdc != null && !maPdc.isEmpty()) {
+			query.descend("maPdc").constrain(maPdc);
 		}
 
-		if (Makho != null && !Makho.isEmpty()) {
-			query.descend("Makho").constrain(Makho);
+		if (maKho != null && !maKho.isEmpty()) {
+			query.descend("maKho").constrain(maKho);
 		}
 
 		if (fromDate != null) {
-			query.descend("Ngaydc").constrain(fromDate).greater(); // Ngày lớn hơn hoặc bằng fromDate
+			query.descend("ngayDc").constrain(fromDate).greater(); // Ngày lớn hơn hoặc bằng fromDate
 		}
 
 		if (toDate != null) {
-			query.descend("Ngaydc").constrain(toDate).smaller(); // Ngày nhỏ hơn hoặc bằng toDate
+			query.descend("ngayDc").constrain(toDate).smaller(); // Ngày nhỏ hơn hoặc bằng toDate
 		}
 
 		// Thực hiện truy vấn
@@ -200,7 +198,7 @@ public class ctlLayDanhSachPhieu {
 	}
 
 	// ChiTietPhieuDieuChuyen
-	public List<ChiTietPhieuDieuChuyen> getChiTietPhieuDieuChuyen(String Mapdc, String Masp) {
+	public List<ChiTietPhieuDieuChuyen> getChiTietPhieuDieuChuyen(String maPdc, String maSp) {
 		List<ChiTietPhieuDieuChuyen> listResult = new ArrayList<>();
 
 		// Tạo truy vấn SODA
@@ -208,12 +206,12 @@ public class ctlLayDanhSachPhieu {
 		query.constrain(PhieuNhap.class);
 
 		// Thêm điều kiện
-		if (Mapdc != null && !Mapdc.isEmpty()) {
-			query.descend("Mapdc").constrain(Mapdc);
+		if (maPdc != null && !maPdc.isEmpty()) {
+			query.descend("maPdc").constrain(maPdc);
 		}
 
-		if (Masp != null && !Masp.isEmpty()) {
-			query.descend("Masp").constrain(Masp);
+		if (maSp != null && !maSp.isEmpty()) {
+			query.descend("maSp").constrain(maSp);
 		}
 
 		// Thực hiện truy vấn

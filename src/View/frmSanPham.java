@@ -57,7 +57,7 @@ public class frmSanPham extends JPanel {
 	private void createFormPanel() {
 		// Tạo đường viền với tiêu đề, phông chữ và màu sắc tùy chỉnh
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 10, 415, 205);
+		panel.setBounds(10, 70, 415, 205);
 		panel.setBorder(BorderFactory.createTitledBorder("Tìm kiếm:"));
 		add(panel);
 		panel.setLayout(null);
@@ -119,7 +119,7 @@ public class frmSanPham extends JPanel {
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
-		panel_1.setBounds(435, 10, 546, 205);
+		panel_1.setBounds(435, 70, 546, 205);
 		panel_1.setBorder(BorderFactory.createTitledBorder("Thông tin chi tiết:"));
 		add(panel_1);
 
@@ -243,6 +243,11 @@ public class frmSanPham extends JPanel {
 		table.getColumnModel().getColumn(3).setPreferredWidth(147);
 		table.getColumnModel().getColumn(4).setPreferredWidth(147);
 		scrollPane.setViewportView(table);
+		
+		JLabel lblQunLSn = new JLabel("QUẢN LÝ SẢN PHẨM");
+		lblQunLSn.setFont(new Font("Arial", Font.PLAIN, 30));
+		lblQunLSn.setBounds(10, 10, 684, 49);
+		add(lblQunLSn);
 
 		// Thêm hiệu ứng zebra
 		table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
@@ -293,8 +298,8 @@ public class frmSanPham extends JPanel {
 
 		// Thêm các hàng mới vào bảng
 		for (SanPham object : resrulList) {
-			model.addRow(new Object[] { object.getMasp(), object.getTensp(), object.getDongia(), object.getDonvitinh(),
-					object.getLoaisp() });
+			model.addRow(new Object[] { object.getMaSp(), object.getTenSp(), object.getDonGia(), object.getDonViTinh(),
+					object.getLoaiSp() });
 			// System.out.println(object.toString());
 		}
 	}

@@ -176,7 +176,7 @@ public class frmChuyenKhoReport extends JPanel {
 		table.setFont(new Font("Arial", Font.PLAIN, 14));
 
 		String[] columnNames = { "Mã phiếu DC", "Mã sản phẩm", "Tên sản phẩm", "Đơn giá", "Đơn vị tính", "Số lượng",
-				"Thành tiền", "Mã nhân viên đi", "Mã nhân viên đến", "Ngày xuất", "Mã kho đi", "Mã kho đến",
+				"Thành tiền", "Mã nhân viên đi", "Mã nhân viên đến", "Ngày", "Mã kho đi", "Mã kho đến",
 				"Tổng tiền" };
 		model = new DefaultTableModel(columnNames, 0);
 		table = new JTable(model);
@@ -214,10 +214,10 @@ public class frmChuyenKhoReport extends JPanel {
 
 	}
 
-	private void layDanhSach(String Mapn, String Masp, String Manvdi, String Manvden, String Makhodi, String Makhoden,
+	private void layDanhSach(String maPn, String maSp, String maNvDi, String maNvDen, String maKhoDi, String maKhoDen,
 			Date fromDate, Date toDate) {
 		// Lấy dữ liệu từ controller
-		List<KhoReport> report = controller.getDataReport(Mapn, Masp, Manvdi, Manvden, Makhodi, Makhoden, fromDate,
+		List<KhoReport> report = controller.getDataReport(maPn, maSp, maNvDi, maNvDen, maKhoDi, maKhoDen, fromDate,
 				toDate);
 
 		// Xóa các hàng cũ trong bảng
@@ -225,10 +225,10 @@ public class frmChuyenKhoReport extends JPanel {
 
 		// Thêm các hàng mới vào bảng
 		for (KhoReport object : report) {
-			model.addRow(new Object[] { object.getMaphieu(), object.getMasp(), object.getTensp(), object.getDongia(),
-					object.getDonvitinh(), object.getSoluong(), object.getThanhtien(), object.getManvdi(),
-					object.getManvden(), object.getNgay(), object.getMakhodi(), object.getMakhoden(),
-					object.getTongtien() });
+			model.addRow(new Object[] { object.getMaPhieu(), object.getMaSp(), object.getTenSp(), object.getDonGia(),
+					object.getDonViTinh(), object.getSoLuong(), object.getThanhTien(), object.getMaNvDi(),
+					object.getMaNvDen(), object.getNgay(), object.getMaKhoDi(), object.getMaNvDen(),
+					object.getTongTien() });
 		}
 	}
 

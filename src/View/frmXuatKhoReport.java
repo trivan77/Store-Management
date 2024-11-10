@@ -198,9 +198,9 @@ public class frmXuatKhoReport extends JPanel {
 
 		// Thêm các hàng mới vào bảng
 		for (KhoReport object : report) {
-			model.addRow(new Object[] { object.getMaphieu(), object.getMasp(), object.getTensp(), object.getDongia(),
-					object.getDonvitinh(), object.getSoluong(), object.getThanhtien(), object.getManv(),
-					object.getNgay(), object.getMakho(), object.getTongtien() });
+			model.addRow(new Object[] { object.getMaPhieu(), object.getMaSp(), object.getTenSp(), object.getDonGia(),
+					object.getDonViTinh(), object.getSoLuong(), object.getThanhTien(), object.getMaNv(),
+					object.getNgay(), object.getMaKho(), object.getTongTien() });
 		}
 	}
 

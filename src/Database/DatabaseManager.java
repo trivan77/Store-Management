@@ -1,5 +1,6 @@
 package Database;
 
+import java.io.File;
 import java.util.Date;
 
 import com.db4o.Db4oEmbedded;
@@ -13,6 +14,10 @@ public class DatabaseManager {
 	public static final String DB_NAME = "QuanLyKhoDB.db4o";
 
 	public DatabaseManager() {
+		File file = new File(DB_NAME);
+		if (file.exists())
+			file.delete();
+
 		db = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), DB_NAME);
 	}
 
@@ -60,69 +65,85 @@ public class DatabaseManager {
 		if (sanPham.size() == 0) {
 			// Thêm dữ liệu SanPham
 			db.store(new SanPham("SP001", "Sản phẩm 01", 10, "KG", "LSP001"));
-			db.store(new SanPham("SP002", "Sản phẩm 02", 20, "KG", "LSP002"));
+			db.store(new SanPham("SP002", "Sản phẩm 02", 10, "KG", "LSP002"));
+			db.store(new SanPham("SP003", "Sản phẩm 03", 10, "KG", "LSP001"));
+			db.store(new SanPham("SP004", "Sản phẩm 04", 10, "KG", "LSP002"));
+			db.store(new SanPham("SP005", "Sản phẩm 05", 10, "KG", "LSP001"));
 		}
 
 		// Kiểm tra xem có dữ liệu Kho
 		ObjectSet<Kho> kho = db.query(Kho.class);
 		if (kho.size() == 0) {
 			// Thêm dữ liệu Kho
-			db.store(new Kho("Kho001", "Kho 001", "LSP001"));
-			db.store(new Kho("Kho002", "Kho 002", "LSP001"));
+			db.store(new Kho("KHO001", "Kho 001", "LSP001"));
+			db.store(new Kho("KHO002", "Kho 002", "LSP001"));
 		}
 
 		// Kiểm tra xem có dữ liệu PhieuNhap
 		ObjectSet<PhieuNhap> phieuNhap = db.query(PhieuNhap.class);
 		if (phieuNhap.size() == 0) {
 			// Thêm dữ liệu Kho
-			db.store(new PhieuNhap("PN001", "A00001", new Date(), "Kho001", 20));
-			db.store(new PhieuNhap("PN002", "A00002", new Date(), "Kho002", 20));
+			db.store(new PhieuNhap("PN001", "A00001", new Date(), "KHO001", 500));
+			db.store(new PhieuNhap("PN002", "A00002", new Date(), "KHO002", 20));
 		}
 
 		// Kiểm tra xem có dữ liệu ChiTietPhieuNhap
 		ObjectSet<ChiTietPhieuNhap> chiTietPhieuNhap = db.query(ChiTietPhieuNhap.class);
 		if (chiTietPhieuNhap.size() == 0) {
 			// Thêm dữ liệu Kho
-			db.store(new ChiTietPhieuNhap("PN001", "SP001", "Sản phẩm 1", 10, "Cái", 1));
-			db.store(new ChiTietPhieuNhap("PN002", "SP002", "Sản phẩm 2", 10, "Cái", 1));
+			db.store(new ChiTietPhieuNhap("PN001", "SP001", "Sản phẩm 1", 10, "Cái", 10));
+			db.store(new ChiTietPhieuNhap("PN001", "SP002", "Sản phẩm 2", 10, "Cái", 10));
+			db.store(new ChiTietPhieuNhap("PN001", "SP003", "Sản phẩm 3", 10, "Cái", 10));
+			db.store(new ChiTietPhieuNhap("PN001", "SP004", "Sản phẩm 4", 10, "Cái", 10));
+			db.store(new ChiTietPhieuNhap("PN001", "SP005", "Sản phẩm 5", 10, "Cái", 10));
 		}
 
 		// Kiểm tra xem có dữ liệu PhieuXuat
 		ObjectSet<PhieuXuat> phieuXuat = db.query(PhieuXuat.class);
 		if (phieuXuat.size() == 0) {
 			// Thêm dữ liệu Kho
-			db.store(new PhieuXuat("PN001", "A00001", new Date(), "Kho001", 20));
-			db.store(new PhieuXuat("PN002", "A00002", new Date(), "Kho002", 20));
+			db.store(new PhieuXuat("PN001", "A00001", new Date(), "KHO001", 50));
+			db.store(new PhieuXuat("PN002", "A00002", new Date(), "KHO002", 20));
 		}
 
 		// Kiểm tra xem có dữ liệu ChiTietPhieuXuat
 		ObjectSet<ChiTietPhieuXuat> chiTietPhieuXuat = db.query(ChiTietPhieuXuat.class);
 		if (chiTietPhieuXuat.size() == 0) {
 			// Thêm dữ liệu Kho
-			db.store(new ChiTietPhieuXuat("PN001", "SP001", "Sản phẩm 1", 10, "Cái", 1));
-			db.store(new ChiTietPhieuXuat("PN002", "SP002", "Sản phẩm 2", 10, "Cái", 1));
+			db.store(new ChiTietPhieuNhap("PN001", "SP001", "Sản phẩm 1", 10, "Cái", 1));
+			db.store(new ChiTietPhieuNhap("PN001", "SP002", "Sản phẩm 2", 10, "Cái", 1));
+			db.store(new ChiTietPhieuNhap("PN001", "SP003", "Sản phẩm 3", 10, "Cái", 1));
+			db.store(new ChiTietPhieuNhap("PN001", "SP004", "Sản phẩm 4", 10, "Cái", 1));
+			db.store(new ChiTietPhieuNhap("PN001", "SP005", "Sản phẩm 5", 10, "Cái", 1));
 		}
 
 		// Kiểm tra xem có dữ liệu PhieuDieuChuyen
 		ObjectSet<PhieuDieuChuyen> phieuDieuChuyen = db.query(PhieuDieuChuyen.class);
 		if (phieuDieuChuyen.size() == 0) {
 			// Thêm dữ liệu Kho
-			db.store(new PhieuDieuChuyen("DC001", "A00001", "A00002", new Date(), "Kho001", "Kho002", 100000));
-			db.store(new PhieuDieuChuyen("DC002", "A00002", "A00003", new Date(), "Kho002", "Kho003", 150000));
-			db.store(new PhieuDieuChuyen("DC003", "A00001", "A00003", new Date(), "Kho001", "Kho003", 200000));
-			db.store(new PhieuDieuChuyen("DC004", "A00003", "A00001", new Date(), "Kho003", "Kho001", 300000));
-			db.store(new PhieuDieuChuyen("DC005", "A00002", "A00001", new Date(), "Kho002", "Kho001", 250000));
+			db.store(new PhieuDieuChuyen("DC001", "A00001", "A00002", new Date(), "KHO001", "KHO002", 10));
+			db.store(new PhieuDieuChuyen("DC002", "A00002", "A00003", new Date(), "KHO001", "KHO002", 10));
 		}
 
 		// Kiểm tra xem có dữ liệu ChiTietPhieuDieuChuyen
 		ObjectSet<ChiTietPhieuDieuChuyen> chiTietPhieuDieuChuyen = db.query(ChiTietPhieuDieuChuyen.class);
 		if (chiTietPhieuDieuChuyen.size() == 0) {
 			// Thêm dữ liệu Kho
-			db.store(new ChiTietPhieuDieuChuyen("DC001", "SP001", "Sản phẩm A", 10000, "Cái", 5));
-			db.store(new ChiTietPhieuDieuChuyen("DC001", "SP002", "Sản phẩm B", 15000, "Cái", 3));
-			db.store(new ChiTietPhieuDieuChuyen("DC002", "SP003", "Sản phẩm C", 20000, "Cái", 4));
-			db.store(new ChiTietPhieuDieuChuyen("DC002", "SP004", "Sản phẩm D", 25000, "Cái", 2));
-			db.store(new ChiTietPhieuDieuChuyen("DC003", "SP001", "Sản phẩm A", 10000, "Cái", 10));
+			db.store(new ChiTietPhieuDieuChuyen("DC001", "SP001", "Sản phẩm A", 10, "Cái", 1));
+			db.store(new ChiTietPhieuDieuChuyen("DC001", "SP002", "Sản phẩm B", 10, "Cái", 1));
+		}
+
+		// Kiểm tra xem có dữ liệu ChiTietSanPham
+		ObjectSet<ChiTietSanPham> chiTietSanPham = db.query(ChiTietSanPham.class);
+		if (chiTietSanPham.size() == 0) {
+			// Thêm dữ liệu ChiTietSanPham
+			db.store(new ChiTietSanPham("SP001", "Sản phẩm 01", "KHO001", "Kho 001", 8));
+			db.store(new ChiTietSanPham("SP002", "Sản phẩm 02", "KHO001", "Kho 001", 8));
+			db.store(new ChiTietSanPham("SP003", "Sản phẩm 03", "KHO001", "Kho 001", 9));
+			db.store(new ChiTietSanPham("SP004", "Sản phẩm 04", "KHO001", "Kho 001", 9));
+			db.store(new ChiTietSanPham("SP005", "Sản phẩm 05", "KHO001", "Kho 001", 9));
+			db.store(new ChiTietSanPham("SP001", "Sản phẩm 01", "KHO002", "Kho 002", 1));
+			db.store(new ChiTietSanPham("SP002", "Sản phẩm 02", "KHO002", "Kho 002", 1));
 		}
 
 	}

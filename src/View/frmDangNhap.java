@@ -23,7 +23,7 @@ public class frmDangNhap extends JFrame {
 	 */
 	public frmDangNhap(DatabaseManager dbManager) {
 		this.ctlDangNhap = new ctlDangNhap(dbManager.getDb()); // Pass db to StudentController
-		
+
 		setTitle("Phần mềm quản lý kho hàng");
 		setSize(800, 450);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -123,18 +123,18 @@ public class frmDangNhap extends JFrame {
 
 		exitButton.addActionListener(e -> {
 			dbManager.closeDB(); // Đóng cơ sở dữ liệu trước khi thoát
-		    System.exit(0); // Thoát khỏi ứng dụng
+			System.exit(0); // Thoát khỏi ứng dụng
 		});
-		
-        // Thêm WindowListener để xử lý sự kiện nhấn nút "X"
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-            	dbManager.closeDB(); // Đóng cơ sở dữ liệu trước khi thoát
-                System.out.println("Database closed before exit.");
-            }
-        });
-        
+
+		// Thêm WindowListener để xử lý sự kiện nhấn nút "X"
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				dbManager.closeDB(); // Đóng cơ sở dữ liệu trước khi thoát
+				System.out.println("Database closed before exit.");
+			}
+		});
+
 		rightPanel.setLayout(null);
 
 		// Thêm các thành phần vào rightPanel

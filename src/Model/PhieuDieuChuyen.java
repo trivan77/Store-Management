@@ -5,87 +5,87 @@ import java.util.Date;
 public class PhieuDieuChuyen {
 
 	// Các thuộc tính
-	private String Mapdc; // Mã phiếu điều chuyển (Primary Key)
-	private String Manvdi; // Mã nhân viên đi
-	private String Manvden; // Mã nhân viên đến
-	private Date Ngaydc; // Ngày điều chuyển
-	private String Makhodi; // Mã kho đi
-	private String Makhoden; // Mã kho đến
-	private float Tongtien; // Tổng tiền
+	private String maPdc; // Mã phiếu điều chuyển (Primary Key)
+	private String maNvDi; // Mã nhân viên đi
+	private String maNvDen; // Mã nhân viên đến
+	private Date ngayDc; // Ngày điều chuyển
+	private String maKhoDi; // Mã kho đi
+	private String maKhoDen; // Mã kho đến
+	private float tongTien; // Tổng tiền
 
 	// Constructor
-	public PhieuDieuChuyen(String Mapdc, String Manvdi, String Manvden, Date Ngaydc, String Makhodi, String Makhoden,
-			float Tongtien) {
-		this.Mapdc = Mapdc;
-		this.Manvdi = Manvdi;
-		this.Manvden = Manvden;
-		this.Ngaydc = Ngaydc;
-		this.Makhodi = Makhodi;
-		this.Makhoden = Makhoden;
-		this.Tongtien = Tongtien;
+	public PhieuDieuChuyen(String maPdc, String maNvDi, String maNvDen, Date ngayDc, String maKhoDi, String maKhoDen,
+			float tongTien) {
+		this.maPdc = maPdc;
+		this.maNvDi = maNvDi;
+		this.maNvDen = maNvDen;
+		this.ngayDc = ngayDc;
+		this.maKhoDi = maKhoDi;
+		this.maKhoDen = maKhoDen;
+		this.tongTien = tongTien;
 	}
 
 	// Getters và Setters
-	public String getMapdc() {
-		return Mapdc;
+	public String getMaPdc() {
+		return maPdc;
 	}
 
-	public void setMapdc(String Mapdc) {
-		this.Mapdc = Mapdc;
+	public void setMaPdc(String maPdc) {
+		this.maPdc = maPdc;
 	}
 
-	public String getManvdi() {
-		return Manvdi;
+	public String getMaNvDi() {
+		return maNvDi;
 	}
 
-	public void setManvdi(String Manvdi) {
-		this.Manvdi = Manvdi;
+	public void setMaNvDi(String maNvDi) {
+		this.maNvDi = maNvDi;
 	}
 
-	public String getManvden() {
-		return Manvden;
+	public String getMaNvDen() {
+		return maNvDen;
 	}
 
-	public void setManvden(String Manvden) {
-		this.Manvden = Manvden;
+	public void setMaNvDen(String maNvDen) {
+		this.maNvDen = maNvDen;
 	}
 
-	public java.util.Date getNgaydc() {
-		return Ngaydc;
+	public java.util.Date getNgayDc() {
+		return ngayDc;
 	}
 
-	public void setNgaydc(java.util.Date Ngaydc) {
-		this.Ngaydc = Ngaydc;
+	public void setNgayDc(java.util.Date ngayDc) {
+		this.ngayDc = ngayDc;
 	}
 
-	public String getMakhodi() {
-		return Makhodi;
+	public String getMaKhoDi() {
+		return maKhoDi;
 	}
 
-	public void setMakhodi(String Makhodi) {
-		this.Makhodi = Makhodi;
+	public void setMaKhoDi(String maKhoDi) {
+		this.maKhoDi = maKhoDi;
 	}
 
-	public String getMakhoden() {
-		return Makhoden;
+	public String getMaKhoDen() {
+		return maKhoDen;
 	}
 
-	public void setMakhoden(String Makhoden) {
-		this.Makhoden = Makhoden;
+	public void setMaKhoDen(String maKhoDen) {
+		this.maKhoDen = maKhoDen;
 	}
 
-	public float getTongtien() {
-		return Tongtien;
+	public float getTongTien() {
+		return tongTien;
 	}
 
-	public void setTongtien(float Tongtien) {
-		this.Tongtien = Tongtien;
+	public void setTongTien(float tongTien) {
+		this.tongTien = tongTien;
 	}
 
 	@Override
 	public String toString() {
-		return "PhieuDieuChuyen{" + "Mapdc='" + Mapdc + '\'' + ", Manvdi='" + Manvdi + '\'' + ", Manvden='" + Manvden
-				+ '\'' + ", Ngaydc=" + Ngaydc + ", Makhodi='" + Makhodi + '\'' + ", Makhoden='" + Makhoden + '\''
-				+ ", Tongtien=" + Tongtien + '}';
+		return "PhieuDieuChuyen{" + "maPdc='" + maPdc + '\'' + ", maNvDi='" + maNvDi + '\'' + ", maNvDen='" + maNvDen
+				+ '\'' + ", ngayDc=" + ngayDc + ", maKhoDi='" + maKhoDi + '\'' + ", maKhoDen='" + maKhoDen + '\''
+				+ ", tongTien=" + tongTien + '}';
 	}
 }

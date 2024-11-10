@@ -16,20 +16,20 @@ public class ctlTkNhapKho {
 		this.db = db;
 	}
 
-	public List<KhoReport> getDataReport(String Mapn, String Masp, String Manv, String Makho, Date fromDate,
+	public List<KhoReport> getDataReport(String maPn, String Masp, String maNv, String maKho, Date fromDate,
 			Date toDate) {
 
 		List<KhoReport> listReport = new ArrayList<>();
 
 		// Thực hiện truy vấn
-		List<PhieuNhap> listPhieuNhap = getPhieuNhap(Mapn, Makho, Manv, fromDate, toDate);
+		List<PhieuNhap> listPhieuNhap = getPhieuNhap(maPn, maKho, maNv, fromDate, toDate);
 		for (PhieuNhap phieuNhap : listPhieuNhap) {
-			List<ChiTietPhieuNhap> listChiTietPhieuNhap = getChiTietPhieuNhap(phieuNhap.getMapn(), Masp);
+			List<ChiTietPhieuNhap> listChiTietPhieuNhap = getChiTietPhieuNhap(phieuNhap.getMaPn(), Masp);
 
 			for (ChiTietPhieuNhap chitiet : listChiTietPhieuNhap) {
-				KhoReport record = new KhoReport(phieuNhap.getMapn(), chitiet.getMasp(), chitiet.getTensp(),
-						chitiet.getDongia(), chitiet.getDonvitinh(), chitiet.getSoluong(), chitiet.getThanhtien(),
-						phieuNhap.getManv(), phieuNhap.getNgaynhap(), phieuNhap.getMakho(), phieuNhap.getTongtien(),
+				KhoReport record = new KhoReport(phieuNhap.getMaPn(), chitiet.getMaSp(), chitiet.getTenSp(),
+						chitiet.getDonGia(), chitiet.getDonViTinh(), chitiet.getSoLuong(), chitiet.getThanhTien(),
+						phieuNhap.getMaNv(), phieuNhap.getNgayNhap(), phieuNhap.getMaKho(), phieuNhap.getTongTien(),
 						null, null, null, null, null);
 				listReport.add(record);
 			}
@@ -41,7 +41,7 @@ public class ctlTkNhapKho {
 	}
 
 	// PhieuNhap
-	public List<PhieuNhap> getPhieuNhap(String Mapn, String Makho, String Manv, java.util.Date fromDate,
+	public List<PhieuNhap> getPhieuNhap(String maPn, String maKho, String maNv, java.util.Date fromDate,
 			java.util.Date toDate) {
 		List<PhieuNhap> listResult = new ArrayList<>();
 
@@ -50,24 +50,24 @@ public class ctlTkNhapKho {
 		query.constrain(PhieuNhap.class);
 
 		// Thêm điều kiện
-		if (Mapn != null && !Mapn.isEmpty()) {
-			query.descend("Mapn").constrain(Mapn);
+		if (maPn != null && !maPn.isEmpty()) {
+			query.descend("maPn").constrain(maPn);
 		}
 
-		if (Makho != null && !Makho.isEmpty()) {
-			query.descend("Makho").constrain(Makho);
+		if (maKho != null && !maKho.isEmpty()) {
+			query.descend("maKho").constrain(maKho);
 		}
 
-		if (Manv != null && !Manv.isEmpty()) {
-			query.descend("Manv").constrain(Manv);
+		if (maNv != null && !maNv.isEmpty()) {
+			query.descend("maNv").constrain(maNv);
 		}
 
 		if (fromDate != null) {
-			query.descend("Ngaynhap").constrain(fromDate).greater(); // Ngày lớn hơn hoặc bằng fromDate
+			query.descend("ngayNhap").constrain(fromDate).greater(); // Ngày lớn hơn hoặc bằng fromDate
 		}
 
 		if (toDate != null) {
-			query.descend("Ngaynhap").constrain(toDate).smaller(); // Ngày nhỏ hơn hoặc bằng toDate
+			query.descend("ngayNhap").constrain(toDate).smaller(); // Ngày nhỏ hơn hoặc bằng toDate
 		}
 
 		// Thực hiện truy vấn
@@ -86,15 +86,15 @@ public class ctlTkNhapKho {
 	}
 
 	// ChiTietPhieuNhap
-	public List<ChiTietPhieuNhap> getChiTietPhieuNhap(String Mapn, String Masp) {
+	public List<ChiTietPhieuNhap> getChiTietPhieuNhap(String maPn, String Masp) {
 		List<ChiTietPhieuNhap> listResult = new ArrayList<>();
 		// Tạo truy vấn SODA
 		Query query = db.query();
 		query.constrain(ChiTietPhieuNhap.class);
 
 		// Thêm điều kiện
-		if (Mapn != null && !Mapn.isEmpty()) {
-			query.descend("Mapn").constrain(Mapn);
+		if (maPn != null && !maPn.isEmpty()) {
+			query.descend("maPn").constrain(maPn);
 		}
 
 		if (Masp != null && !Masp.isEmpty()) {

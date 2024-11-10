@@ -11,11 +11,11 @@ import com.db4o.query.Query;
 
 import Model.*;
 
-public class ctlSanPham {
+public class ctlChiTietSanPham {
 
 	private ObjectContainer db;
 
-	public ctlSanPham(ObjectContainer db) {
+	public ctlChiTietSanPham(ObjectContainer db) {
 		this.db = db;
 	}
 
@@ -64,10 +64,10 @@ public class ctlSanPham {
 	}
 
 	// Thêm
-	public boolean add(String maSp, String tenSp, String stringDonGia, String donViTinh, String loaiSp) {
+	public boolean add(String maSp, long donGia, int soLuong, String donViTinh, String idLoaiSp) {
 		// Lấy dữ liệu
 		SanPham sanPham = getSanPham(maSp);
-		LoaiSanPham loaiSanPham = getLoaiSanPham(loaiSp);
+		LoaiSanPham loaiSanPham = getLoaiSanPham(idLoaiSp);
 
 		// Kiểm tra dữ liệu
 		if (maSp == null || maSp.isEmpty()) {
@@ -80,7 +80,7 @@ public class ctlSanPham {
 			return false;
 		}
 
-		if (loaiSp == null || loaiSp.isEmpty()) {
+		if (idLoaiSp == null || idLoaiSp.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Vui lòng nhập Loại sản phẩm");
 			return false;
 		}
@@ -90,19 +90,18 @@ public class ctlSanPham {
 			return false;
 		}
 
-		try {
-			Float.parseFloat(stringDonGia);
-		} catch (NumberFormatException e) {
-			JOptionPane.showMessageDialog(null, "Đơn giá không phải là số thập phân hợp lệ");
-			return false;
-		}
+		/*
+		 * try { Float.parseFloat(donGia); } catch (NumberFormatException e) {
+		 * JOptionPane.showMessageDialog(null,
+		 * "Đơn giá không phải là số thập phân hợp lệ"); return false; }
+		 */
 
 		int response = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn thêm?", "Thêm dữ liệu",
 				JOptionPane.YES_NO_OPTION);
 		if (response == JOptionPane.YES_OPTION) {
 			// Lưu lại thay đổi
-			Float donGia = Float.parseFloat(stringDonGia);
-			db.store(new SanPham(maSp, tenSp, donGia, donViTinh, loaiSp));
+			/* Float donGia = Float.parseFloat(donGia); */
+			db.store(new SanPham(maSp, donGia, soLuong, donViTinh, idLoaiSp));
 			return true;
 		}
 
@@ -110,10 +109,10 @@ public class ctlSanPham {
 	}
 
 	// Sửa
-	public boolean edit(String maSp, String tenSp, String stringDonGia, String donViTinh, String loaiSp) {
+	public boolean edit(String maSp, long donGia, int soLuong, String donViTinh, String idLoaiSp) {
 		// Lấy dữ liệu
 		SanPham sanPham = getSanPham(maSp);
-		LoaiSanPham loaiSanPham = getLoaiSanPham(loaiSp);
+		LoaiSanPham loaiSanPham = getLoaiSanPham(idLoaiSp);
 
 		// Kiểm tra dữ liệu
 		if (maSp == null || maSp.isEmpty()) {
@@ -126,7 +125,7 @@ public class ctlSanPham {
 			return false;
 		}
 
-		if (loaiSp == null || loaiSp.isEmpty()) {
+		if (idLoaiSp == null || idLoaiSp.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Vui lòng nhập Loại sản phẩm");
 			return false;
 		}
@@ -136,23 +135,22 @@ public class ctlSanPham {
 			return false;
 		}
 
-		try {
-			Float.parseFloat(stringDonGia);
-		} catch (NumberFormatException e) {
-			JOptionPane.showMessageDialog(null, "Đơn giá không phải là số thập phân hợp lệ");
-			return false;
-		}
+		/*
+		 * try { Float.parseFloat(stringdonGia); } catch (NumberFormatException e) {
+		 * JOptionPane.showMessageDialog(null,
+		 * "Đơn giá không phải là số thập phân hợp lệ"); return false; }
+		 */
 
 		int response = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn sửa?", "Sửa dữ liệu",
 				JOptionPane.YES_NO_OPTION);
 		if (response == JOptionPane.YES_OPTION) {
 			// Cập nhật thông tin
-			Float donGia = Float.parseFloat(stringDonGia);
+			/* Float donGia = Float.parseFloat(stringdonGia); */
 			sanPham.setMaSp(maSp);
-			sanPham.setTenSp(tenSp);
 			sanPham.setDonGia(donGia);
+			sanPham.setSoLuong(soLuong);
 			sanPham.setDonViTinh(donViTinh);
-			sanPham.setLoaiSp(loaiSp);
+			sanPham.setIdLoaiSp(idLoaiSp);
 
 			// Lưu lại thay đổi
 			db.store(sanPham);

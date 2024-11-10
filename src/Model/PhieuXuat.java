@@ -3,66 +3,66 @@ package Model;
 import java.util.Date;
 
 public class PhieuXuat {
-	private String Mapx; // Mã phiếu xuất - Primary Key, not null
-	private String Manv; // Mã nhân viên - nullable
-	private Date Ngayxuat; // Ngày xuất - nullable
-	private String Makho; // Mã kho - nullable
-	private float Tongtien; // Tổng tiền - nullable
+	private String maPx; // Mã phiếu xuất - Primary Key, not null
+	private String maNv; // Mã nhân viên - nullable
+	private Date ngayXuat; // Ngày xuất - nullable
+	private String maKho; // Mã kho - nullable
+	private float tongTien; // Tổng tiền - nullable
 
 	// Constructor
-	public PhieuXuat(String Mapx, String Manv, Date Ngayxuat, String Makho, float Tongtien) {
-		this.Mapx = Mapx;
-		this.Manv = Manv;
-		this.Ngayxuat = Ngayxuat;
-		this.Makho = Makho;
-		this.Tongtien = Tongtien;
+	public PhieuXuat(String maPx, String maNv, Date ngayXuat, String maKho, float tongTien) {
+		this.maPx = maPx;
+		this.maNv = maNv;
+		this.ngayXuat = ngayXuat;
+		this.maKho = maKho;
+		this.tongTien = tongTien;
 	}
 
 	// Getters và Setters cho từng thuộc tính
 
-	public String getMapx() {
-		return Mapx;
+	public String getMaPx() {
+		return maPx;
 	}
 
-	public void setMapx(String Mapx) {
-		this.Mapx = Mapx;
+	public void setMaPx(String maPx) {
+		this.maPx = maPx;
 	}
 
-	public String getManv() {
-		return Manv;
+	public String getMaNv() {
+		return maNv;
 	}
 
-	public void setManv(String Manv) {
-		this.Manv = Manv;
+	public void setMaNv(String maNv) {
+		this.maNv = maNv;
 	}
 
-	public Date getNgayxuat() {
-		return Ngayxuat;
+	public Date getNgayXuat() {
+		return ngayXuat;
 	}
 
-	public void setNgayxuat(Date Ngayxuat) {
-		this.Ngayxuat = Ngayxuat;
+	public void setNgayXuat(Date ngayXuat) {
+		this.ngayXuat = ngayXuat;
 	}
 
-	public String getMakho() {
-		return Makho;
+	public String getMaKho() {
+		return maKho;
 	}
 
-	public void setMakho(String Makho) {
-		this.Makho = Makho;
+	public void setMaKho(String maKho) {
+		this.maKho = maKho;
 	}
 
-	public float getTongtien() {
-		return Tongtien;
+	public float getTongTien() {
+		return tongTien;
 	}
 
-	public void setTongtien(float Tongtien) {
-		this.Tongtien = Tongtien;
+	public void setTongTien(float tongTien) {
+		this.tongTien = tongTien;
 	}
 
 	@Override
 	public String toString() {
-		return "PhieuXuat{" + "Mapx='" + Mapx + '\'' + ", Manv='" + Manv + '\'' + ", Ngayxuat=" + Ngayxuat + ", Makho='"
-				+ Makho + '\'' + ", Tongtien=" + Tongtien + '}';
+		return "PhieuXuat{" + "maPx='" + maPx + '\'' + ", maNv='" + maNv + '\'' + ", ngayXuat=" + ngayXuat + ", maKho='"
+				+ maKho + '\'' + ", tongTien=" + tongTien + '}';
 	}
 }

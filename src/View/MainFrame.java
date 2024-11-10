@@ -28,6 +28,7 @@ public class MainFrame extends JFrame {
 	private JPanel frmNhapKhoReport;
 	private JPanel frmXuatKhoReport;
 	private JPanel frmChuyenKhoReport;
+	private JPanel frmTonKhoReport;
 
 	public MainFrame(DatabaseManager dbManager, String username) {
 
@@ -134,6 +135,11 @@ public class MainFrame extends JFrame {
 		mnTkChuyenKho.setFont(new Font("Arial", Font.PLAIN, 14));
 		mnThongke.add(mnTkChuyenKho);
 
+		JMenuItem mnTkTonKho = new JMenuItem("Thống kê Chi tiết sản phẩm");
+		mnTkTonKho.setForeground(Color.BLACK);
+		mnTkTonKho.setFont(new Font("Arial", Font.PLAIN, 14));
+		mnThongke.add(mnTkTonKho);
+
 		// Khởi tạo các frame con
 		frmTrangChu = new frmTrangChu(dbManager, username);
 		frmNhanVien = new frmNhanVien(dbManager);
@@ -147,6 +153,7 @@ public class MainFrame extends JFrame {
 		frmNhapKhoReport = new frmNhapKhoReport(dbManager);
 		frmXuatKhoReport = new frmXuatKhoReport(dbManager);
 		frmChuyenKhoReport = new frmChuyenKhoReport(dbManager);
+		frmTonKhoReport = new frmTonKhoReport(dbManager);
 
 		// Thêm các frame vào contentPane với tên cụ thể
 		contentPane.add(frmTrangChu, "frmTrangChu");
@@ -161,6 +168,7 @@ public class MainFrame extends JFrame {
 		contentPane.add(frmNhapKhoReport, "frmNhapKhoReport");
 		contentPane.add(frmXuatKhoReport, "frmXuatKhoReport");
 		contentPane.add(frmChuyenKhoReport, "frmChuyenKhoReport");
+		contentPane.add(frmTonKhoReport, "frmTonKhoReport");
 
 		// Đặt lệnh gọi showPanel khi menu được chọn
 		mnTrangChu.addMenuListener(new MenuListenerAdapter(() -> showPanel("frmTrangChu")));
@@ -175,6 +183,7 @@ public class MainFrame extends JFrame {
 		mnTkNhapKho.addActionListener(e -> showPanel("frmNhapKhoReport"));
 		mnTkXuatKho.addActionListener(e -> showPanel("frmXuatKhoReport"));
 		mnTkChuyenKho.addActionListener(e -> showPanel("frmChuyenKhoReport"));
+		mnTkTonKho.addActionListener(e -> showPanel("frmTonKhoReport"));
 
 		// Thêm contentPane vào MainFrame
 		getContentPane().add(contentPane);

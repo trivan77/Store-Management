@@ -7,19 +7,19 @@ import com.db4o.query.Query;
 import Model.NhanVien;
 
 public class ctlDangNhap {
-    private static ObjectContainer db;
+	private static ObjectContainer db;
 
-    public ctlDangNhap(ObjectContainer db) {
-        this.db = db;
-    }
-    
-    public static boolean validateUser(String username, String password) {
-        Query query = db.query();
-        query.constrain(NhanVien.class);
-        query.descend("Manv").constrain(username);
-        query.descend("Matkhau").constrain(password);
-        ObjectSet<NhanVien> result = query.execute();
-        return result.size() > 0; 
-    }
-    
+	public ctlDangNhap(ObjectContainer db) {
+		this.db = db;
+	}
+
+	public static boolean validateUser(String userName, String passWord) {
+		Query query = db.query();
+		query.constrain(NhanVien.class);
+		query.descend("maNv").constrain(userName);
+		query.descend("matKhau").constrain(passWord);
+		ObjectSet<NhanVien> result = query.execute();
+		return result.size() > 0;
+	}
+
 }

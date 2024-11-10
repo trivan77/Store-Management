@@ -69,60 +69,60 @@ public class frmNhanVien extends JPanel {
 	private void createFormPanel() {
 		// Tạo đường viền với tiêu đề, phông chữ và màu sắc tùy chỉnh
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 10, 620, 234);
+		panel.setBounds(10, 66, 620, 234);
 		panel.setBorder(BorderFactory.createTitledBorder("Tìm kiếm:"));
 		add(panel);
 		panel.setLayout(null);
 
 		JLabel lblFMasp = new JLabel("Mã nhân viên:");
 		lblFMasp.setFont(new Font("Arial", Font.PLAIN, 14));
-		lblFMasp.setBounds(10, 14, 116, 17);
+		lblFMasp.setBounds(10, 28, 116, 17);
 		panel.add(lblFMasp);
 
 		txtTKManv = new JTextField();
 		txtTKManv.setFont(new Font("Arial", Font.PLAIN, 14));
 		txtTKManv.setColumns(10);
-		txtTKManv.setBounds(112, 14, 210, 20);
+		txtTKManv.setBounds(112, 28, 210, 20);
 		panel.add(txtTKManv);
 
 		JLabel lblFTensp = new JLabel("Tên nhân viên:");
 		lblFTensp.setFont(new Font("Arial", Font.PLAIN, 14));
-		lblFTensp.setBounds(10, 50, 134, 17);
+		lblFTensp.setBounds(10, 64, 134, 17);
 		panel.add(lblFTensp);
 
 		txtTKTennv = new JTextField();
 		txtTKTennv.setFont(new Font("Arial", Font.PLAIN, 14));
 		txtTKTennv.setColumns(10);
-		txtTKTennv.setBounds(112, 48, 210, 20);
+		txtTKTennv.setBounds(112, 62, 210, 20);
 		panel.add(txtTKTennv);
 
 		JLabel lblFTensp_1 = new JLabel("Giới tính:");
 		lblFTensp_1.setFont(new Font("Arial", Font.PLAIN, 14));
-		lblFTensp_1.setBounds(10, 84, 134, 17);
+		lblFTensp_1.setBounds(10, 98, 134, 17);
 		panel.add(lblFTensp_1);
 
 		txtTKDiachi = new JTextArea();
-		txtTKDiachi.setBounds(404, 79, 210, 70);
+		txtTKDiachi.setBounds(404, 93, 210, 70);
 		panel.add(txtTKDiachi);
 
 		JLabel lblFTensp_1_1 = new JLabel("Điện thoại:");
 		lblFTensp_1_1.setFont(new Font("Arial", Font.PLAIN, 14));
-		lblFTensp_1_1.setBounds(10, 118, 134, 17);
+		lblFTensp_1_1.setBounds(10, 132, 134, 17);
 		panel.add(lblFTensp_1_1);
 
 		JLabel lblFTensp_1_1_1 = new JLabel("Địa chỉ:");
 		lblFTensp_1_1_1.setFont(new Font("Arial", Font.PLAIN, 14));
-		lblFTensp_1_1_1.setBounds(332, 82, 134, 17);
+		lblFTensp_1_1_1.setBounds(332, 96, 134, 17);
 		panel.add(lblFTensp_1_1_1);
 
 		JLabel lblFTensp_1_1_2 = new JLabel("Số CMND:");
 		lblFTensp_1_1_2.setFont(new Font("Arial", Font.PLAIN, 14));
-		lblFTensp_1_1_2.setBounds(332, 16, 134, 17);
+		lblFTensp_1_1_2.setBounds(332, 30, 134, 17);
 		panel.add(lblFTensp_1_1_2);
 
 		JLabel lblFTensp_1_1_3 = new JLabel("Chức vụ:");
 		lblFTensp_1_1_3.setFont(new Font("Arial", Font.PLAIN, 14));
-		lblFTensp_1_1_3.setBounds(332, 50, 134, 17);
+		lblFTensp_1_1_3.setBounds(332, 64, 134, 17);
 		panel.add(lblFTensp_1_1_3);
 
 		// Khai báo JComboBox cho giới tính
@@ -131,25 +131,25 @@ public class frmNhanVien extends JPanel {
 		txtTKGioitinh.addItem("Nam");
 		txtTKGioitinh.addItem("Nữ");
 		txtTKGioitinh.setFont(new Font("Arial", Font.PLAIN, 14));
-		txtTKGioitinh.setBounds(112, 82, 210, 20);
+		txtTKGioitinh.setBounds(112, 96, 210, 20);
 		panel.add(txtTKGioitinh);
 
 		txtTKDienthoai = new JTextField();
 		txtTKDienthoai.setFont(new Font("Arial", Font.PLAIN, 14));
 		txtTKDienthoai.setColumns(10);
-		txtTKDienthoai.setBounds(112, 116, 210, 20);
+		txtTKDienthoai.setBounds(112, 130, 210, 20);
 		panel.add(txtTKDienthoai);
 
 		txtTKSocmnd = new JTextField();
 		txtTKSocmnd.setFont(new Font("Arial", Font.PLAIN, 14));
 		txtTKSocmnd.setColumns(10);
-		txtTKSocmnd.setBounds(404, 14, 210, 20);
+		txtTKSocmnd.setBounds(404, 28, 210, 20);
 		panel.add(txtTKSocmnd);
 
 		txtTKChucvu = new JTextField();
 		txtTKChucvu.setFont(new Font("Arial", Font.PLAIN, 14));
 		txtTKChucvu.setColumns(10);
-		txtTKChucvu.setBounds(404, 48, 210, 20);
+		txtTKChucvu.setBounds(404, 62, 210, 20);
 		panel.add(txtTKChucvu);
 
 		JButton btnTimKiem = new JButton("Tìm");
@@ -165,7 +165,7 @@ public class frmNhanVien extends JPanel {
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
-		panel_1.setBounds(631, 10, 633, 234);
+		panel_1.setBounds(631, 66, 633, 234);
 		panel_1.setBorder(BorderFactory.createTitledBorder("Thông tin chi tiết:"));
 		add(panel_1);
 
@@ -306,7 +306,7 @@ public class frmNhanVien extends JPanel {
 		setLayout(null);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 245, 1254, 401);
+		scrollPane.setBounds(10, 301, 1254, 401);
 		add(scrollPane);
 
 		String[] columnNames = { "Mã nhân viên", "Tên nhân viên", "Giới tính", "Điện thoại", "Địa chỉ", "Số CMND",
@@ -327,6 +327,11 @@ public class frmNhanVien extends JPanel {
 		table.getColumnModel().getColumn(6).setPreferredWidth(100);
 		table.getColumnModel().getColumn(7).setPreferredWidth(100);
 		scrollPane.setViewportView(table);
+		
+		JLabel lblQunLNhn = new JLabel("QUẢN LÝ NHÂN VIÊN");
+		lblQunLNhn.setFont(new Font("Arial", Font.PLAIN, 30));
+		lblQunLNhn.setBounds(10, 0, 684, 49);
+		add(lblQunLNhn);
 
 		// Thêm hiệu ứng zebra
 		table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
@@ -381,16 +386,16 @@ public class frmNhanVien extends JPanel {
 		// Thêm các hàng mới vào bảng
 		for (NhanVien object : resultList) {
 
-			String matKhau = object.getMatkhau(); // Lấy mật khẩu
+			String matKhau = object.getMatKhau(); // Lấy mật khẩu
 			String maskedPassword = matKhau != null ? "*".repeat(matKhau.length()) : ""; // Mã hóa mật khẩu thành dấu *
 
-			model.addRow(new Object[] { object.getManv(), // Mã nhân viên
-					object.getTennv(), // Tên nhân viên
-					object.getGioitinh(), // Giới tính
-					object.getDienthoai(), // Điện thoại
-					object.getDiachi(), // Địa chỉ
-					object.getSocmnd(), // Số CMND
-					object.getChucvu(), // Chức vụ
+			model.addRow(new Object[] { object.getMaNv(), // Mã nhân viên
+					object.getTenNv(), // Tên nhân viên
+					object.getGioiTinh(), // Giới tính
+					object.getDienThoai(), // Điện thoại
+					object.getDiaChi(), // Địa chỉ
+					object.getSoCmnd(), // Số CMND
+					object.getChucVu(), // Chức vụ
 					maskedPassword // Hiển thị dấu * thay vì mật khẩu thực
 			});
 			// System.out.println(object.toString());
@@ -404,15 +409,15 @@ public class frmNhanVien extends JPanel {
 
 		// Tạo đối tượng NhanVien với các giá trị từ các trường đầu vào
 		NhanVien nhanVien = new NhanVien();
-		nhanVien.setManv(txtTKManv.getText());
-		nhanVien.setTennv(txtTKTennv.getText());
+		nhanVien.setMaNv(txtTKManv.getText());
+		nhanVien.setTenNv(txtTKTennv.getText());
 		if (selectedItem != null) {
-			nhanVien.setGioitinh(selectedItem.toString());
+			nhanVien.setGioiTinh(selectedItem.toString());
 		}
-		nhanVien.setDienthoai(txtTKDienthoai.getText());
-		nhanVien.setDiachi(txtTKDiachi.getText());
-		nhanVien.setSocmnd(txtTKSocmnd.getText());
-		nhanVien.setChucvu(txtTKChucvu.getText());
+		nhanVien.setDienThoai(txtTKDienthoai.getText());
+		nhanVien.setDiaChi(txtTKDiachi.getText());
+		nhanVien.setSoCmnd(txtTKSocmnd.getText());
+		nhanVien.setChucVu(txtTKChucvu.getText());
 
 		// Cập nhật bảng với danh sách nhân viên theo tiêu chí tìm kiếm
 		layDanhSach(nhanVien);
@@ -428,30 +433,30 @@ public class frmNhanVien extends JPanel {
 
 		// Lấy thông tin từ các trường nhập liệu để thêm mới nhân viên
 		NhanVien nhanVien = new NhanVien();
-		nhanVien.setManv(txtManv.getText());
-		nhanVien.setTennv(txtTennv.getText());
+		nhanVien.setMaNv(txtManv.getText());
+		nhanVien.setTenNv(txtTennv.getText());
 		if (selectedItem != null) {
-			nhanVien.setGioitinh((String) txtGioitinh.getSelectedItem());
+			nhanVien.setGioiTinh((String) txtGioitinh.getSelectedItem());
 		}
-		nhanVien.setDienthoai(txtDienthoai.getText());
-		nhanVien.setDiachi(txtDiachi.getText());
-		nhanVien.setSocmnd(txtSocmnd.getText());
-		nhanVien.setChucvu(txtChucvu.getText());
-		nhanVien.setMatkhau(txtMatkhau.getText());
+		nhanVien.setDienThoai(txtDienthoai.getText());
+		nhanVien.setDiaChi(txtDiachi.getText());
+		nhanVien.setSoCmnd(txtSocmnd.getText());
+		nhanVien.setChucVu(txtChucvu.getText());
+		nhanVien.setMatKhau(txtMatkhau.getText());
 
 		// Thêm nhân viên và cập nhật danh sách nếu thành công
 		if (controller.add(nhanVien)) {
 			// Tạo đối tượng tìm kiếm NhanVien
 			NhanVien nhanVienSearch = new NhanVien();
-			nhanVienSearch.setManv(txtTKManv.getText());
-			nhanVienSearch.setTennv(txtTKTennv.getText());
-			nhanVienSearch.setDiachi(txtTKDiachi.getText());
+			nhanVienSearch.setMaNv(txtTKManv.getText());
+			nhanVienSearch.setTenNv(txtTKTennv.getText());
+			nhanVienSearch.setDiaChi(txtTKDiachi.getText());
 			if (selectedItem != null) {
-				nhanVienSearch.setGioitinh(selectedItem.toString());
+				nhanVienSearch.setGioiTinh(selectedItem.toString());
 			}
-			nhanVienSearch.setDienthoai(txtTKDienthoai.getText());
-			nhanVienSearch.setSocmnd(txtTKSocmnd.getText());
-			nhanVienSearch.setChucvu(txtTKChucvu.getText());
+			nhanVienSearch.setDienThoai(txtTKDienthoai.getText());
+			nhanVienSearch.setSoCmnd(txtTKSocmnd.getText());
+			nhanVienSearch.setChucVu(txtTKChucvu.getText());
 
 			// Cập nhật bảng
 			layDanhSach(nhanVienSearch);
@@ -467,28 +472,28 @@ public class frmNhanVien extends JPanel {
 
 		// Lấy thông tin từ các trường nhập liệu để chỉnh sửa nhân viên
 		NhanVien nhanVien = new NhanVien();
-		nhanVien.setManv(txtManv.getText());
-		nhanVien.setTennv(txtTennv.getText());
-		nhanVien.setGioitinh((String) txtGioitinh.getSelectedItem());
-		nhanVien.setDienthoai(txtDienthoai.getText());
-		nhanVien.setDiachi(txtDiachi.getText());
-		nhanVien.setSocmnd(txtSocmnd.getText());
-		nhanVien.setChucvu(txtChucvu.getText());
-		nhanVien.setMatkhau(txtMatkhau.getText());
+		nhanVien.setMaNv(txtManv.getText());
+		nhanVien.setTenNv(txtTennv.getText());
+		nhanVien.setGioiTinh((String) txtGioitinh.getSelectedItem());
+		nhanVien.setDienThoai(txtDienthoai.getText());
+		nhanVien.setDiaChi(txtDiachi.getText());
+		nhanVien.setSoCmnd(txtSocmnd.getText());
+		nhanVien.setChucVu(txtChucvu.getText());
+		nhanVien.setMatKhau(txtMatkhau.getText());
 
 		// Chỉnh sửa nhân viên và cập nhật danh sách nếu thành công
 		if (controller.edit(nhanVien)) {
 			// Tạo đối tượng tìm kiếm NhanVien
 			NhanVien nhanVienSearch = new NhanVien();
-			nhanVienSearch.setManv(txtTKManv.getText());
-			nhanVienSearch.setTennv(txtTKTennv.getText());
-			nhanVienSearch.setDiachi(txtTKDiachi.getText());
+			nhanVienSearch.setMaNv(txtTKManv.getText());
+			nhanVienSearch.setTenNv(txtTKTennv.getText());
+			nhanVienSearch.setDiaChi(txtTKDiachi.getText());
 			if (selectedItem != null) {
-				nhanVienSearch.setGioitinh(selectedItem.toString());
+				nhanVienSearch.setGioiTinh(selectedItem.toString());
 			}
-			nhanVienSearch.setDienthoai(txtTKDienthoai.getText());
-			nhanVienSearch.setSocmnd(txtTKSocmnd.getText());
-			nhanVienSearch.setChucvu(txtTKChucvu.getText());
+			nhanVienSearch.setDienThoai(txtTKDienthoai.getText());
+			nhanVienSearch.setSoCmnd(txtTKSocmnd.getText());
+			nhanVienSearch.setChucVu(txtTKChucvu.getText());
 
 			// Cập nhật bảng
 			layDanhSach(nhanVienSearch);
@@ -504,21 +509,21 @@ public class frmNhanVien extends JPanel {
 
 		// Lấy thông tin từ trường nhập liệu để xóa nhân viên
 		NhanVien nhanVien = new NhanVien();
-		nhanVien.setManv(txtManv.getText());
+		nhanVien.setMaNv(txtManv.getText());
 
 		// Gọi phương thức xóa nhân viên trong controller
 		if (controller.del(nhanVien)) {
 			// Lấy thông tin tìm kiếm từ các trường
 			NhanVien nhanVienSearch = new NhanVien();
-			nhanVienSearch.setManv(txtTKManv.getText());
-			nhanVienSearch.setTennv(txtTKTennv.getText());
-			nhanVienSearch.setDiachi(txtTKDiachi.getText());
+			nhanVienSearch.setMaNv(txtTKManv.getText());
+			nhanVienSearch.setTenNv(txtTKTennv.getText());
+			nhanVienSearch.setDiaChi(txtTKDiachi.getText());
 			if (selectedItem != null) {
-				nhanVienSearch.setGioitinh(selectedItem.toString());
+				nhanVienSearch.setGioiTinh(selectedItem.toString());
 			}
-			nhanVienSearch.setDienthoai(txtTKDienthoai.getText());
-			nhanVienSearch.setSocmnd(txtTKSocmnd.getText());
-			nhanVienSearch.setChucvu(txtTKChucvu.getText());
+			nhanVienSearch.setDienThoai(txtTKDienthoai.getText());
+			nhanVienSearch.setSoCmnd(txtTKSocmnd.getText());
+			nhanVienSearch.setChucVu(txtTKChucvu.getText());
 
 			// Cập nhật bảng sau khi xóa
 			layDanhSach(nhanVienSearch);

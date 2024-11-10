@@ -5,173 +5,174 @@ import java.util.Date;
 public class KhoReport {
 
 	// Các thuộc tính
-	private String Maphieu; // Mã phiếu nhập (Primary Key)
-	private String Masp; // Mã sản phẩm
-	private String Tensp; // Tên sản phẩm
-	private float Dongia; // Đơn giá
-	private String Donvitinh; // Đơn vị tính
-	private int Soluong; // Số lượng
-	private float Thanhtien; // Thành tiền
-	private String Manv; // Mã nhân viên
-	private Date Ngay; // Ngày nhập
-	private String Makho; // Mã kho
-	private float Tongtien; // Tổng tiền
+	private String maPhieu; // Mã phiếu nhập (Primary Key)
+	private String maSp; // Mã sản phẩm
+	private String tenSp; // Tên sản phẩm
+	private float donGia; // Đơn giá
+	private String donViTinh; // Đơn vị tính
+	private int soLuong; // Số lượng
+	private float thanhTien; // Thành tiền
+	private String maNv; // Mã nhân viên
+	private Date ngay; // Ngày nhập
+	private String maKho; // Mã kho
+	private float tongTien; // Tổng maKho
 
-	private String Manvdi; // Mã nhân viên đi
-	private String Manvden; // Mã nhân viên đến
-	private Date Ngaydc; // Ngày điều chuyển
-	private String Makhodi; // Mã kho đi
-	private String Makhoden; // Mã kho đến
+	private String maNvDi; // Mã nhân viên đi
+	private String maNvDen; // Mã nhân viên đến
+	private Date ngayDc; // Ngày điều chuyển
+	private String maKhoDi; // Mã kho đi
+	private String maKhoDen; // Mã kho đến
 
 	// Constructor
-	public KhoReport(String maphieu, String masp, String tensp, float dongia, String donvitinh, int soluong,
-			float thanhtien, String manv, Date ngay, String makho, float tongtien, String manvdi, String manvden,
-			Date ngaydc, String makhodi, String makhoden) {
+	// Constructor
+	public KhoReport(String maPhieu, String maSp, String tenSp, float donGia, String donViTinh, int soLuong,
+			float thanhTien, String maNv, Date ngay, String maKho, float tongTien, String maNvDi, String maNvDen,
+			Date ngayDc, String maKhoDi, String maKhoDen) {
 		super();
-		Maphieu = maphieu;
-		Masp = masp;
-		Tensp = tensp;
-		Dongia = dongia;
-		Donvitinh = donvitinh;
-		Soluong = soluong;
-		Thanhtien = thanhtien;
-		Manv = manv;
-		Ngay = ngay;
-		Makho = makho;
-		Tongtien = tongtien;
-		Manvdi = manvdi;
-		Manvden = manvden;
-		Ngaydc = ngaydc;
-		Makhodi = makhodi;
-		Makhoden = makhoden;
+		this.maPhieu = maPhieu;
+		this.maSp = maSp;
+		this.tenSp = tenSp;
+		this.donGia = donGia;
+		this.donViTinh = donViTinh;
+		this.soLuong = soLuong;
+		this.thanhTien = thanhTien;
+		this.maNv = maNv;
+		this.ngay = ngay;
+		this.maKho = maKho;
+		this.tongTien = tongTien;
+		this.maNvDi = maNvDi;
+		this.maNvDen = maNvDen;
+		this.ngayDc = ngayDc;
+		this.maKhoDi = maKhoDi;
+		this.maKhoDen = maKhoDen;
 	}
 
-	public String getMaphieu() {
-		return Maphieu;
+	public String getMaPhieu() {
+		return maPhieu;
 	}
 
-	public void setMaphieu(String mapn) {
-		Maphieu = mapn;
+	public void setMaPhieu(String mapn) {
+		maPhieu = mapn;
 	}
 
-	public String getMasp() {
-		return Masp;
+	public String getMaSp() {
+		return maSp;
 	}
 
-	public void setMasp(String masp) {
-		Masp = masp;
+	public void setMaSp(String maSp) {
+		this.maSp = maSp;
 	}
 
-	public String getTensp() {
-		return Tensp;
+	public String getTenSp() {
+		return tenSp;
 	}
 
-	public void setTensp(String tensp) {
-		Tensp = tensp;
+	public void setTenSp(String tenSp) {
+		this.tenSp = tenSp;
 	}
 
-	public float getDongia() {
-		return Dongia;
+	public float getDonGia() {
+		return donGia;
 	}
 
-	public void setDongia(float dongia) {
-		Dongia = dongia;
+	public void setDonGia(float donGia) {
+		this.donGia = donGia;
 	}
 
-	public String getDonvitinh() {
-		return Donvitinh;
+	public String getDonViTinh() {
+		return donViTinh;
 	}
 
-	public void setDonvitinh(String donvitinh) {
-		Donvitinh = donvitinh;
+	public void setDonViTinh(String donViTinh) {
+		this.donViTinh = donViTinh;
 	}
 
-	public int getSoluong() {
-		return Soluong;
+	public int getSoLuong() {
+		return soLuong;
 	}
 
-	public void setSoluong(int soluong) {
-		Soluong = soluong;
+	public void setSoLuong(int soLuong) {
+		this.soLuong = soLuong;
 	}
 
-	public float getThanhtien() {
-		return Thanhtien;
+	public float getThanhTien() {
+		return thanhTien;
 	}
 
-	public void setThanhtien(float thanhtien) {
-		Thanhtien = thanhtien;
+	public void setThanhTien(float thanhTien) {
+		this.thanhTien = thanhTien;
 	}
 
-	public String getManv() {
-		return Manv;
+	public String getMaNv() {
+		return maNv;
 	}
 
-	public void setManv(String manv) {
-		Manv = manv;
+	public void setMaNv(String maNv) {
+		this.maNv = maNv;
 	}
 
 	public Date getNgay() {
-		return Ngay;
+		return ngay;
 	}
 
 	public void setNgay(Date ngay) {
-		Ngay = ngay;
+		this.ngay = ngay;
 	}
 
-	public String getMakho() {
-		return Makho;
+	public String getMaKho() {
+		return maKho;
 	}
 
-	public void setMakho(String makho) {
-		Makho = makho;
+	public void setMaKho(String maKho) {
+		this.maKho = maKho;
 	}
 
-	public float getTongtien() {
-		return Tongtien;
+	public float getTongTien() {
+		return tongTien;
 	}
 
-	public void setTongtien(float tongtien) {
-		Tongtien = tongtien;
+	public void setTongTien(float tongTien) {
+		this.tongTien = tongTien;
 	}
 
-	public String getManvdi() {
-		return Manvdi;
+	public String getMaNvDi() {
+		return maNvDi;
 	}
 
-	public void setManvdi(String manvdi) {
-		Manvdi = manvdi;
+	public void setMaNvDi(String maNvDi) {
+		this.maNvDi = maNvDi;
 	}
 
-	public String getManvden() {
-		return Manvden;
+	public String getMaNvDen() {
+		return maNvDen;
 	}
 
-	public void setManvden(String manvden) {
-		Manvden = manvden;
+	public void setMaNvDen(String maNvDen) {
+		this.maNvDen = maNvDen;
 	}
 
-	public Date getNgaydc() {
-		return Ngaydc;
+	public Date getNgayDc() {
+		return ngayDc;
 	}
 
-	public void setNgaydc(Date ngaydc) {
-		Ngaydc = ngaydc;
+	public void setNgayDc(Date ngayDc) {
+		this.ngayDc = ngayDc;
 	}
 
-	public String getMakhodi() {
-		return Makhodi;
+	public String getMaKhoDi() {
+		return maKhoDi;
 	}
 
-	public void setMakhodi(String makhodi) {
-		Makhodi = makhodi;
+	public void setMaKhoDi(String maKhoDi) {
+		this.maKhoDi = maKhoDi;
 	}
 
-	public String getMakhoden() {
-		return Makhoden;
+	public String getMaKhoDen() {
+		return maKhoDen;
 	}
 
-	public void setMakhoden(String makhoden) {
-		Makhoden = makhoden;
+	public void setMaKhoDen(String maKhoDen) {
+		this.maKhoDen = maKhoDen;
 	}
 
 	// Getters và Setters

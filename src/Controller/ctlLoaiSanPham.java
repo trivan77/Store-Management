@@ -21,25 +21,25 @@ public class ctlLoaiSanPham {
 	}
 
 	// Lấy danh sách Loại sản phẩm
-	public List<LoaiSanPham> layDanhSachLoaiSanPham(String Loaisp, String Tenloai) {
+	public List<LoaiSanPham> layDanhSachLoaiSanPham(String loaiSp, String tenLoai) {
 		List<LoaiSanPham> loaiSanPham = new ArrayList<>();
 
 		// Tạo truy vấn SODA
 		Query query = db.query();
 		query.constrain(LoaiSanPham.class);
 
-		// Thêm điều kiện cho loaisp nếu không rỗng
-		if (Loaisp != null && !Loaisp.isEmpty()) {
-			query.descend("Loaisp").constrain(Loaisp);
+		// Thêm điều kiện cho loaiSp nếu không rỗng
+		if (loaiSp != null && !loaiSp.isEmpty()) {
+			query.descend("loaiSp").constrain(loaiSp);
 		}
 
-		// Thêm điều kiện cho tenloai nếu không rỗng
-		if (Tenloai != null && !Tenloai.isEmpty()) {
-			query.descend("Tenloai").constrain(Tenloai);
+		// Thêm điều kiện cho tenLoai nếu không rỗng
+		if (tenLoai != null && !tenLoai.isEmpty()) {
+			query.descend("tenLoai").constrain(tenLoai);
 		}
 
-		// Thêm sắp xếp tăng dần theo Loaisp
-		query.descend("Loaisp").orderAscending();
+		// Thêm sắp xếp tăng dần theo loaiSp
+		query.descend("loaiSp").orderAscending();
 
 		// Thực hiện truy vấn
 		ObjectSet<LoaiSanPham> result = query.execute();
@@ -54,12 +54,12 @@ public class ctlLoaiSanPham {
 	}
 
 	// Thêm LoaiSanPham
-	public boolean add(String Loaisp, String Tenloai, String Mota) {
+	public boolean add(String loaiSp, String tenLoai, String moTa) {
 		// Lấy dữ liệu
-		LoaiSanPham loaiSanPham = getLoaiSanPham(Loaisp);
+		LoaiSanPham loaiSanPham = getLoaiSanPham(loaiSp);
 
 		// Kiểm tra dữ liệu
-		if (Loaisp == null || Loaisp.isEmpty()) {
+		if (loaiSp == null || loaiSp.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Vui lòng nhập Loại sản phẩm");
 			return false;
 		}
@@ -73,7 +73,7 @@ public class ctlLoaiSanPham {
 				JOptionPane.YES_NO_OPTION);
 		if (response == JOptionPane.YES_OPTION) {
 			// Lưu lại thay đổi
-			db.store(new LoaiSanPham(Loaisp, Tenloai, Mota));
+			db.store(new LoaiSanPham(loaiSp, tenLoai, moTa));
 			return true;
 		}
 
@@ -82,12 +82,12 @@ public class ctlLoaiSanPham {
 	}
 
 	// Sửa LoaiSanPham
-	public boolean edit(String Loaisp, String Tenloai, String Mota) {
+	public boolean edit(String loaiSp, String tenLoai, String moTa) {
 		// Lấy dữ liệu
-		LoaiSanPham loaiSanPham = getLoaiSanPham(Loaisp);
+		LoaiSanPham loaiSanPham = getLoaiSanPham(loaiSp);
 
 		// Kiểm tra dữ liệu
-		if (Loaisp == null || Loaisp.isEmpty()) {
+		if (loaiSp == null || loaiSp.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Vui lòng nhập Loại sản phẩm");
 			return false;
 		}
@@ -101,8 +101,8 @@ public class ctlLoaiSanPham {
 				JOptionPane.YES_NO_OPTION);
 		if (response == JOptionPane.YES_OPTION) {
 			// Cập nhật thông tin trực tiếp cho đối tượng hiện tại
-			loaiSanPham.setTenloai(Tenloai);
-			loaiSanPham.setMota(Mota);
+			loaiSanPham.setTenLoai(tenLoai);
+			loaiSanPham.setMoTa(moTa);
 
 			// Lưu lại thay đổi
 			db.store(loaiSanPham);
@@ -112,13 +112,13 @@ public class ctlLoaiSanPham {
 	}
 
 	// Xóa LoaiSanPham
-	public boolean del(String Loaisp) {
+	public boolean del(String loaiSp) {
 		// Lấy dữ liệu
-		LoaiSanPham loaiSanPham = getLoaiSanPham(Loaisp);
-		SanPham sanPham = getSanPham(Loaisp);
+		LoaiSanPham loaiSanPham = getLoaiSanPham(loaiSp);
+		SanPham sanPham = getSanPham(loaiSp);
 
 		// Kiểm tra dữ liệu
-		if (Loaisp == null || Loaisp.isEmpty()) {
+		if (loaiSp == null || loaiSp.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Vui lòng nhập Loại sản phẩm");
 			return false;
 		}
@@ -143,17 +143,17 @@ public class ctlLoaiSanPham {
 	}
 
 	// Tìm LoaiSanPham dựa trên mã sản phẩm
-	private LoaiSanPham getLoaiSanPham(String Loaisp) {
-		ObjectSet<LoaiSanPham> loaiSanPham = db.queryByExample(new LoaiSanPham(Loaisp, null, null));
+	private LoaiSanPham getLoaiSanPham(String loaiSp) {
+		ObjectSet<LoaiSanPham> loaiSanPham = db.queryByExample(new LoaiSanPham(loaiSp, null, null));
 		return loaiSanPham.hasNext() ? loaiSanPham.next() : null;
 	}
 
 	// Tìm SanPham dựa trên mã sản phẩm
-	private SanPham getSanPham(String Loaisp) {
+	private SanPham getSanPham(String loaiSp) {
 		// Tạo truy vấn SODA
 		Query query = db.query();
 		query.constrain(SanPham.class);
-		query.descend("Loaisp").constrain(Loaisp);
+		query.descend("loaiSp").constrain(loaiSp);
 		ObjectSet<SanPham> result = query.execute();
 		return result.hasNext() ? result.next() : null;
 	}

@@ -1,66 +1,66 @@
 package Model;
 
 public class SanPham {
-	private String Masp; // Mã sản phẩm - Primary Key
-	private String Tensp; // Tên sản phẩm
-	private float Dongia; // Đơn giá
-	private String Donvitinh; // Đơn vị tính
-	private String Loaisp; // Loại sản phẩm
+	private String maSp; // Mã sản phẩm - Primary Key
+	private String tenSp; // Tên sản phẩm
+	private float donGia; // Đơn giá
+	private String donViTinh; // Đơn vị tính
+	private String loaiSp; // Loại sản phẩm
 
 	// Constructor
-	public SanPham(String Masp, String Tensp, float Dongia, String Donvitinh, String Loaisp) {
-		this.Masp = Masp;
-		this.Tensp = Tensp;
-		this.Dongia = Dongia;
-		this.Donvitinh = Donvitinh;
-		this.Loaisp = Loaisp;
+	public SanPham(String maSp, String tenSp, float donGia, String donViTinh, String loaiSp) {
+		this.maSp = maSp;
+		this.tenSp = tenSp;
+		this.donGia = donGia;
+		this.donViTinh = donViTinh;
+		this.loaiSp = loaiSp;
 	}
 
 	// Getters và Setters cho từng thuộc tính
 
-	public String getMasp() {
-		return Masp;
+	public String getMaSp() {
+		return maSp;
 	}
 
-	public void setMasp(String Masp) {
-		this.Masp = Masp;
+	public void setMaSp(String maSp) {
+		this.maSp = maSp;
 	}
 
-	public String getTensp() {
-		return Tensp;
+	public String getTenSp() {
+		return tenSp;
 	}
 
-	public void setTensp(String Tensp) {
-		this.Tensp = Tensp;
+	public void setTenSp(String tenSp) {
+		this.tenSp = tenSp;
 	}
 
-	public float getDongia() {
-		return Dongia;
+	public float getDonGia() {
+		return donGia;
 	}
 
-	public void setDongia(float Dongia) {
-		this.Dongia = Dongia;
+	public void setDonGia(float donGia) {
+		this.donGia = donGia;
 	}
 
-	public String getDonvitinh() {
-		return Donvitinh;
+	public String getDonViTinh() {
+		return donViTinh;
 	}
 
-	public void setDonvitinh(String Donvitinh) {
-		this.Donvitinh = Donvitinh;
+	public void setDonViTinh(String donViTinh) {
+		this.donViTinh = donViTinh;
 	}
 
-	public String getLoaisp() {
-		return Loaisp;
+	public String getLoaiSp() {
+		return loaiSp;
 	}
 
-	public void setLoaisp(String Loaisp) {
-		this.Loaisp = Loaisp;
+	public void setLoaiSp(String loaiSp) {
+		this.loaiSp = loaiSp;
 	}
 
 	@Override
 	public String toString() {
-		return "SanPham{" + "Masp='" + Masp + '\'' + ", Tensp='" + Tensp + '\'' + ", Dongia=" + Dongia + ", Donvitinh='"
-				+ Donvitinh + '\'' + ", Loaisp='" + Loaisp + '\'' + '}';
+		return "SanPham{" + "maSp='" + maSp + '\'' + ", tenSp='" + tenSp + '\'' + ", donGia=" + donGia + ", donViTinh='"
+				+ donViTinh + '\'' + ", loaiSp='" + loaiSp + '\'' + '}';
 	}
 }

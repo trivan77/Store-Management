@@ -28,33 +28,33 @@ public class ctlNhanVien {
 		query.constrain(NhanVien.class);
 
 		// Kiểm tra từng trường và thêm điều kiện vào truy vấn
-		if (nhanVien.getManv() != null && !nhanVien.getManv().isEmpty()) {
-			query.descend("Manv").constrain(nhanVien.getManv());
+		if (nhanVien.getMaNv() != null && !nhanVien.getMaNv().isEmpty()) {
+			query.descend("maNv").constrain(nhanVien.getMaNv());
 		}
-		if (nhanVien.getTennv() != null && !nhanVien.getTennv().isEmpty()) {
-			query.descend("Tennv").constrain(nhanVien.getTennv()).contains();
+		if (nhanVien.getTenNv() != null && !nhanVien.getTenNv().isEmpty()) {
+			query.descend("tenNv").constrain(nhanVien.getTenNv()).contains();
 		}
-		if (nhanVien.getGioitinh() != null && !nhanVien.getGioitinh().isEmpty()) {
-			query.descend("Gioitinh").constrain(nhanVien.getGioitinh());
+		if (nhanVien.getGioiTinh() != null && !nhanVien.getGioiTinh().isEmpty()) {
+			query.descend("gioiTinh").constrain(nhanVien.getGioiTinh());
 		}
-		if (nhanVien.getDienthoai() != null && !nhanVien.getDienthoai().isEmpty()) {
-			query.descend("Dienthoai").constrain(nhanVien.getDienthoai());
+		if (nhanVien.getDienThoai() != null && !nhanVien.getDienThoai().isEmpty()) {
+			query.descend("dienThoai").constrain(nhanVien.getDienThoai());
 		}
-		if (nhanVien.getDiachi() != null && !nhanVien.getDiachi().isEmpty()) {
-			query.descend("Diachi").constrain(nhanVien.getDiachi()).contains();
+		if (nhanVien.getDiaChi() != null && !nhanVien.getDiaChi().isEmpty()) {
+			query.descend("diaChi").constrain(nhanVien.getDiaChi()).contains();
 		}
-		if (nhanVien.getSocmnd() != null && !nhanVien.getSocmnd().isEmpty()) {
-			query.descend("Socmnd").constrain(nhanVien.getSocmnd());
+		if (nhanVien.getSoCmnd() != null && !nhanVien.getSoCmnd().isEmpty()) {
+			query.descend("soCmnd").constrain(nhanVien.getSoCmnd());
 		}
-		if (nhanVien.getChucvu() != null && !nhanVien.getChucvu().isEmpty()) {
-			query.descend("Chucvu").constrain(nhanVien.getChucvu()).contains();
+		if (nhanVien.getChucVu() != null && !nhanVien.getChucVu().isEmpty()) {
+			query.descend("chucVu").constrain(nhanVien.getChucVu()).contains();
 		}
-		if (nhanVien.getMatkhau() != null && !nhanVien.getMatkhau().isEmpty()) {
-			query.descend("Matkhau").constrain(nhanVien.getMatkhau()).contains();
+		if (nhanVien.getMatKhau() != null && !nhanVien.getMatKhau().isEmpty()) {
+			query.descend("matKhau").constrain(nhanVien.getMatKhau()).contains();
 		}
 
 		// Thêm sắp xếp tăng dần
-		query.descend("Manv").orderAscending();
+		query.descend("maNv").orderAscending();
 
 		// Thực hiện truy vấn
 		try {
@@ -78,7 +78,7 @@ public class ctlNhanVien {
 		NhanVien existingNhanVien = getNhanVien(nhanVien);
 
 		// Kiểm tra dữ liệu
-		if (nhanVien.getManv() == null || nhanVien.getManv().isEmpty()) {
+		if (nhanVien.getMaNv() == null || nhanVien.getMaNv().isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Vui lòng nhập Mã nhân viên");
 			return false;
 		}
@@ -105,7 +105,7 @@ public class ctlNhanVien {
 		NhanVien existingNhanVien = getNhanVien(nhanVien);
 
 		// Kiểm tra dữ liệu
-		if (nhanVien.getManv() == null || nhanVien.getManv().isEmpty()) {
+		if (nhanVien.getMaNv() == null || nhanVien.getMaNv().isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Vui lòng nhập Mã nhân viên");
 			return false;
 		}
@@ -119,13 +119,13 @@ public class ctlNhanVien {
 				JOptionPane.YES_NO_OPTION);
 		if (response == JOptionPane.YES_OPTION) {
 			// Cập nhật thông tin
-			existingNhanVien.setTennv(nhanVien.getTennv());
-			existingNhanVien.setGioitinh(nhanVien.getGioitinh());
-			existingNhanVien.setDienthoai(nhanVien.getDienthoai());
-			existingNhanVien.setDiachi(nhanVien.getDiachi());
-			existingNhanVien.setSocmnd(nhanVien.getSocmnd());
-			existingNhanVien.setChucvu(nhanVien.getChucvu());
-			existingNhanVien.setMatkhau(nhanVien.getMatkhau());
+			existingNhanVien.setTenNv(nhanVien.getTenNv());
+			existingNhanVien.setGioiTinh(nhanVien.getGioiTinh());
+			existingNhanVien.setDienThoai(nhanVien.getDienThoai());
+			existingNhanVien.setDiaChi(nhanVien.getDiaChi());
+			existingNhanVien.setSoCmnd(nhanVien.getSoCmnd());
+			existingNhanVien.setChucVu(nhanVien.getChucVu());
+			existingNhanVien.setMatKhau(nhanVien.getMatKhau());
 
 			// Lưu lại thay đổi
 			db.store(existingNhanVien);
@@ -140,7 +140,7 @@ public class ctlNhanVien {
 		NhanVien existingNhanVien = getNhanVien(nhanVien);
 
 		// Kiểm tra dữ liệu
-		if (nhanVien.getManv() == null || nhanVien.getManv().isEmpty()) {
+		if (nhanVien.getMaNv() == null || nhanVien.getMaNv().isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Vui lòng nhập Mã nhân viên");
 			return false;
 		}
@@ -162,12 +162,12 @@ public class ctlNhanVien {
 	// Tìm NhanVien
 	public NhanVien getNhanVien(NhanVien nhanVien) {
 		// Lấy mã nhân viên từ đối tượng NhanVien
-		String manv = nhanVien.getManv();
+		String maNv = nhanVien.getMaNv();
 
 		// Tạo truy vấn để tìm nhân viên theo mã nhân viên
 		Query query = db.query();
 		query.constrain(NhanVien.class);
-		query.descend("Manv").constrain(manv);
+		query.descend("maNv").constrain(maNv);
 
 		// Thực thi truy vấn
 		ObjectSet<NhanVien> result = query.execute();
@@ -183,12 +183,12 @@ public class ctlNhanVien {
 	// Tìm PhieuNhap
 	private PhieuNhap getPhieuNhap(NhanVien nhanVien) {
 		// Lấy mã nhân viên từ đối tượng NhanVien
-		String manv = nhanVien.getManv();
+		String maNv = nhanVien.getMaNv();
 
 		// Tạo truy vấn SODA
 		Query query = db.query();
 		query.constrain(PhieuNhap.class);
-		query.descend("Manv").constrain(manv);
+		query.descend("maNv").constrain(maNv);
 		ObjectSet<PhieuNhap> result = query.execute();
 		return result.hasNext() ? result.next() : null;
 	}
@@ -196,12 +196,12 @@ public class ctlNhanVien {
 	// Tìm PhieuXuat
 	private PhieuXuat getPhieuXuat(NhanVien nhanVien) {
 		// Lấy mã nhân viên từ đối tượng NhanVien
-		String manv = nhanVien.getManv();
+		String maNv = nhanVien.getMaNv();
 
 		// Tạo truy vấn SODA
 		Query query = db.query();
 		query.constrain(PhieuXuat.class);
-		query.descend("Manv").constrain(manv);
+		query.descend("maNv").constrain(maNv);
 		ObjectSet<PhieuXuat> result = query.execute();
 		return result.hasNext() ? result.next() : null;
 	}
@@ -209,12 +209,12 @@ public class ctlNhanVien {
 	// Tìm PhieuDieuChuyen
 	private PhieuDieuChuyen getPhieuDieuChuyen(NhanVien nhanVien) {
 		// Lấy mã nhân viên từ đối tượng NhanVien
-		String manv = nhanVien.getManv();
+		String maNv = nhanVien.getMaNv();
 
 		// Tạo truy vấn SODA
 		Query query = db.query();
 		query.constrain(PhieuDieuChuyen.class);
-		query.descend("Manv").constrain(manv);
+		query.descend("maNv").constrain(maNv);
 		ObjectSet<PhieuDieuChuyen> result = query.execute();
 		return result.hasNext() ? result.next() : null;
 	}
