@@ -145,10 +145,11 @@ public class frmTonKhoReport extends JPanel {
 		// Xóa các hàng cũ trong bảng
 		model.setRowCount(0);
 
-		// Thêm các hàng mới vào bảng
-		for (ChiTietSanPham object : report) {
-			model.addRow(new Object[] { object.getMaSp(), object.getTenSp(), object.getMaKho(), object.getTenKho(), object.getSoLuong() });
-		}
+		/*
+		 * // Thêm các hàng mới vào bảng for (ChiTietSanPham object : report) {
+		 * model.addRow(new Object[] { object.getMaSp(), object.getTenSp(),
+		 * object.getMaKho(), object.getTenKho(), object.getSoLuong() }); }
+		 */
 	}
 
 	private void loadReportData() {

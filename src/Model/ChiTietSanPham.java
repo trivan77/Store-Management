@@ -2,11 +2,10 @@ package Model;
 
 public class ChiTietSanPham {
 
-    // Các thuộc tính
+	// Các thuộc tính
+	private String maCtSp; // Mã chi tiết sản phẩm
     private String maSp;      // Mã sản phẩm
-    private String tenSp;     // Tên sản phẩm
     private String maKho;     // Mã kho
-    private String tenKho;    // Tên kho
     private int soLuong;   // Số lượng
 
     // Constructor không tham số
@@ -14,30 +13,29 @@ public class ChiTietSanPham {
     }
 
     // Constructor có tham số
-    public ChiTietSanPham(String maSp, String tenSp, String maKho, String tenKho, int soLuong) {
+    public ChiTietSanPham(String maCtSp, String maSp, String maKho, int soLuong) {
+        this.maCtSp = maCtSp;
         this.maSp = maSp;
-        this.tenSp = tenSp;
         this.maKho = maKho;
-        this.tenKho = tenKho;
         this.soLuong = soLuong;
     }
 
     // Getter và Setter cho maSp
+
+    public String getMaCtSp() {
+		return maCtSp;
+	}
+
+	public void setMaCtSp(String maCtSp) {
+		this.maCtSp = maCtSp;
+	}
+	
     public String getMaSp() {
         return maSp;
     }
 
     public void setMaSp(String maSp) {
         this.maSp = maSp;
-    }
-
-    // Getter và Setter cho tenSp
-    public String getTenSp() {
-        return tenSp;
-    }
-
-    public void setTenSp(String tenSp) {
-        this.tenSp = tenSp;
     }
 
     // Getter và Setter cho maKho
@@ -47,15 +45,6 @@ public class ChiTietSanPham {
 
     public void setMaKho(String maKho) {
         this.maKho = maKho;
-    }
-
-    // Getter và Setter cho tenKho
-    public String getTenKho() {
-        return tenKho;
-    }
-
-    public void setTenKho(String tenKho) {
-        this.tenKho = tenKho;
     }
 
     // Getter và Setter cho soLuong
@@ -68,14 +57,9 @@ public class ChiTietSanPham {
     }
 
     // Phương thức toString để hiển thị thông tin đối tượng
-    @Override
-    public String toString() {
-        return "ChiTietSanPham{" +
-                "maSp='" + maSp + '\'' +
-                ", tenSp='" + tenSp + '\'' +
-                ", maKho='" + maKho + '\'' +
-                ", tenKho='" + tenKho + '\'' +
-                ", soLuong='" + soLuong + '\'' +
-                '}';
-    }
+	/*
+	 * @Override public String toString() { return "ChiTietSanPham{" + "maSp='" +
+	 * maSp + '\'' + ", tenSp='" + tenSp + '\'' + ", maKho='" + maKho + '\'' +
+	 * ", tenKho='" + tenKho + '\'' + ", soLuong='" + soLuong + '\'' + '}'; }
+	 */
 }

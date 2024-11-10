@@ -21,20 +21,20 @@ public class ctlTkTonKho {
 		List<ChiTietSanPham> listReport = new ArrayList<>();
 		List<ChiTietSanPham> listChiTietSanPham = getChiTietSanPham(maSp, maKho);
 
-		for (ChiTietSanPham chiTietSanPham : listChiTietSanPham) {
-			// Lấy tên sản phẩm từ bảng SanPham
-			List<SanPham> listSanPham = getSanPham(chiTietSanPham.getMaSp());
-			String tenSp = listSanPham.isEmpty() ? null : listSanPham.get(0).getTenSp();
-
-			// Lấy tên kho từ bảng Kho
-			List<Kho> listKho = getKho(chiTietSanPham.getMaKho());
-			String tenKho = listKho.isEmpty() ? null : listKho.get(0).getTenKho();
-
-			// Tạo đối tượng KhoReport và thêm vào danh sách
-			ChiTietSanPham record = new ChiTietSanPham(chiTietSanPham.getMaSp(), tenSp, chiTietSanPham.getMaKho(), tenKho,
-					chiTietSanPham.getSoLuong());
-			listReport.add(record);
-		}
+		/*
+		 * for (ChiTietSanPham chiTietSanPham : listChiTietSanPham) { // Lấy tên sản
+		 * phẩm từ bảng SanPham List<SanPham> listSanPham =
+		 * getSanPham(chiTietSanPham.getMaSp()); String tenSp = listSanPham.isEmpty() ?
+		 * null : listSanPham.get(0).getTenSp();
+		 * 
+		 * // Lấy tên kho từ bảng Kho List<Kho> listKho =
+		 * getKho(chiTietSanPham.getMaKho()); String tenKho = listKho.isEmpty() ? null :
+		 * listKho.get(0).getTenKho();
+		 * 
+		 * // Tạo đối tượng KhoReport và thêm vào danh sách ChiTietSanPham record = new
+		 * ChiTietSanPham(chiTietSanPham.getMaSp(), tenSp, chiTietSanPham.getMaKho(),
+		 * tenKho, chiTietSanPham.getSoLuong()); listReport.add(record); }
+		 */
 
 		return listReport;
 	}

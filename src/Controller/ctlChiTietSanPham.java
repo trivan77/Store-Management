@@ -1,7 +1,9 @@
 package Controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.JOptionPane;
 
@@ -19,226 +21,105 @@ public class ctlChiTietSanPham {
 		this.db = db;
 	}
 
-	// Lấy danh sách Sản phẩm
-	public List<SanPham> layDanhSach(String maSp, String tenSp, String donViTinh, String loaiSp) {
-		List<SanPham> listSanPham = new ArrayList<>();
-
-		// Tạo truy vấn SODA
+	// Thêm mới chi tiết sản phẩm
+	public void InsertProductDetail(String ProductDetailID, String storeID, int num) {
+		// Tạo một truy vấn để tìm ChiTietSanPham theo idProductDetail và idStore
 		Query query = db.query();
-		query.constrain(SanPham.class);
+		query.constrain(ChiTietSanPham.class);
+		query.descend("maCtSp").constrain(ProductDetailID);
+		query.descend("maKho").constrain(storeID);
 
-		// Thêm điều kiện
-		if (maSp != null && !maSp.isEmpty()) {
-			query.descend("maSp").constrain(maSp);
+		ObjectSet<ChiTietSanPham> results = query.execute();
+
+		if (!results.isEmpty()) {
+			// Nếu tìm thấy, lấy bản ghi đầu tiên và cập nhật số lượng
+			ChiTietSanPham chiTietSanPham = results.get(0);
+			chiTietSanPham.setSoLuong(chiTietSanPham.getSoLuong() + num);
+			db.store(chiTietSanPham); // Lưu bản ghi đã cập nhật vào db4o
+		} else {
+			// Nếu không tìm thấy, tạo một bản ghi mới
+			ChiTietSanPham newChiTietSanPham = new ChiTietSanPham();
+			newChiTietSanPham.setMaCtSp(ProductDetailID);
+			newChiTietSanPham.setMaKho(storeID);
+			newChiTietSanPham.setSoLuong(num);
+			db.store(newChiTietSanPham); // Lưu bản ghi mới vào db4o
+		}
+		db.commit(); // Commit để đảm bảo thay đổi được lưu
+	}
+
+	// List tổng số lượng sản phẩm trên hệ thống => trả ra Map: Tên sản phẩm - Tổng số lượng
+	public Map<String, Integer> GetNumOfProduct() {
+		
+		// Bước 1: Tính tổng số lượng của mỗi mã sản phẩm (maSp)
+		ObjectSet<ChiTietSanPham> ListProductDetail = db.query(ChiTietSanPham.class);
+		Map<String, Integer> numOfProduct = new HashMap<>();
+
+		for (ChiTietSanPham ctsp : ListProductDetail) {
+			String productID = ctsp.getMaSp();
+			int num = ctsp.getSoLuong();
+			numOfProduct.put(productID, numOfProduct.getOrDefault(productID, 0) + num);
 		}
 
-		if (tenSp != null && !tenSp.isEmpty()) {
-			query.descend("tenSp").constrain(tenSp);
-		}
+		// Bước 2: Truy vấn tên sản phẩm (tenSp) và tạo Map<tenSp, soLuong>
+		Map<String, Integer> result = new HashMap<>();
 
-		if (donViTinh != null && !donViTinh.isEmpty()) {
-			query.descend("donViTinh").constrain(donViTinh);
-		}
+		for (Map.Entry<String, Integer> entry : numOfProduct.entrySet()) {
+			String productID = entry.getKey();
+			int totalNum = entry.getValue();
 
-		if (loaiSp != null && !loaiSp.isEmpty()) {
-			query.descend("loaiSp").constrain(loaiSp);
-		}
+			// Tìm đối tượng SanPham dựa trên maSp để lấy tenSp
+			SanPham sanPhamExample = new SanPham();
+			sanPhamExample.setMaSp(productID);
+			ObjectSet<SanPham> productResults = db.queryByExample(sanPhamExample);
 
-		// Thêm sắp xếp tăng dần
-		query.descend("maSp").orderAscending();
+			if (!productResults.isEmpty()) {
+				SanPham product = productResults.get(0);
+				String productName = product.getTenSp();
 
-		// Thực hiện truy vấn
-		try {
-			ObjectSet<SanPham> result = query.execute();
-			// Lưu kết quả vào danh sách
-			while (result.hasNext()) {
-				listSanPham.add(result.next());
+				// Thêm tenSp và tổng số lượng vào Map kết quả
+				result.put(productName, totalNum);
 			}
-		} catch (Exception e) {
-			System.err.println("Lỗi khi thực hiện truy vấn: " + e.getMessage());
-			e.printStackTrace(); // In chi tiết lỗi để dễ dàng debug
 		}
 
-		return listSanPham;
-
+		return result;
 	}
+	
+	// List tổng số lượng sản phẩm trong kho chỉ đinh => trả ra Map: Tên sản phẩm - Tổng số lượng
+	public Map<String, Integer> GetNumOfProduct(String storeID){
+		// Bước 1: Lọc các bản ghi ChiTietSanPham theo maKho và tính tổng số lượng cho mỗi maSp
+        ChiTietSanPham example = new ChiTietSanPham();
+        example.setMaKho(storeID);
+        ObjectSet<ChiTietSanPham> chiTietSanPhamResults = db.queryByExample(example);
 
-	// Thêm
-	public boolean add(String maSp, long donGia, int soLuong, String donViTinh, String idLoaiSp) {
-		// Lấy dữ liệu
-		SanPham sanPham = getSanPham(maSp);
-		LoaiSanPham loaiSanPham = getLoaiSanPham(idLoaiSp);
+        Map<String, Integer> numOfProduct = new HashMap<>();
 
-		// Kiểm tra dữ liệu
-		if (maSp == null || maSp.isEmpty()) {
-			JOptionPane.showMessageDialog(null, "Vui lòng nhập Mã sản phẩm");
-			return false;
-		}
+        for (ChiTietSanPham ctsp : chiTietSanPhamResults) {
+            String productID = ctsp.getMaSp();
+            int num = ctsp.getSoLuong();
+            numOfProduct.put(productID, numOfProduct.getOrDefault(productID, 0) + num);
+        }
 
-		if (sanPham != null) {
-			JOptionPane.showMessageDialog(null, "Mã Sản phẩm đã tồn tại");
-			return false;
-		}
+        // Bước 2: Truy vấn tên sản phẩm từ bảng SanPham và tạo Map<tenSp, soLuong>
+        Map<String, Integer> result = new HashMap<>();
 
-		if (idLoaiSp == null || idLoaiSp.isEmpty()) {
-			JOptionPane.showMessageDialog(null, "Vui lòng nhập Loại sản phẩm");
-			return false;
-		}
+        for (Map.Entry<String, Integer> entry : numOfProduct.entrySet()) {
+            String productID = entry.getKey();
+            int totalNum = entry.getValue();
 
-		if (loaiSanPham == null) {
-			JOptionPane.showMessageDialog(null, "Mã Loại sản phẩm chưa tồn tại");
-			return false;
-		}
+            // Tìm đối tượng SanPham dựa trên maSp để lấy tenSp
+            SanPham productExample = new SanPham();
+            productExample.setMaSp(productID);
+            ObjectSet<SanPham> productResults = db.queryByExample(productExample);
 
-		/*
-		 * try { Float.parseFloat(donGia); } catch (NumberFormatException e) {
-		 * JOptionPane.showMessageDialog(null,
-		 * "Đơn giá không phải là số thập phân hợp lệ"); return false; }
-		 */
+            if (!productResults.isEmpty()) {
+                SanPham product = productResults.get(0);
+                String productName = product.getTenSp();
 
-		int response = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn thêm?", "Thêm dữ liệu",
-				JOptionPane.YES_NO_OPTION);
-		if (response == JOptionPane.YES_OPTION) {
-			// Lưu lại thay đổi
-			/* Float donGia = Float.parseFloat(donGia); */
-			db.store(new SanPham(maSp, donGia, soLuong, donViTinh, idLoaiSp));
-			return true;
-		}
+                // Thêm tenSp và tổng số lượng vào Map kết quả
+                result.put(productName, totalNum);
+            }
+        }
 
-		return false;
+        return result;
 	}
-
-	// Sửa
-	public boolean edit(String maSp, long donGia, int soLuong, String donViTinh, String idLoaiSp) {
-		// Lấy dữ liệu
-		SanPham sanPham = getSanPham(maSp);
-		LoaiSanPham loaiSanPham = getLoaiSanPham(idLoaiSp);
-
-		// Kiểm tra dữ liệu
-		if (maSp == null || maSp.isEmpty()) {
-			JOptionPane.showMessageDialog(null, "Vui lòng nhập Mã sản phẩm");
-			return false;
-		}
-
-		if (sanPham == null) {
-			JOptionPane.showMessageDialog(null, "Mã Sản phẩm chưa tồn tại");
-			return false;
-		}
-
-		if (idLoaiSp == null || idLoaiSp.isEmpty()) {
-			JOptionPane.showMessageDialog(null, "Vui lòng nhập Loại sản phẩm");
-			return false;
-		}
-
-		if (loaiSanPham == null) {
-			JOptionPane.showMessageDialog(null, "Mã Loại sản phẩm chưa tồn tại");
-			return false;
-		}
-
-		/*
-		 * try { Float.parseFloat(stringdonGia); } catch (NumberFormatException e) {
-		 * JOptionPane.showMessageDialog(null,
-		 * "Đơn giá không phải là số thập phân hợp lệ"); return false; }
-		 */
-
-		int response = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn sửa?", "Sửa dữ liệu",
-				JOptionPane.YES_NO_OPTION);
-		if (response == JOptionPane.YES_OPTION) {
-			// Cập nhật thông tin
-			/* Float donGia = Float.parseFloat(stringdonGia); */
-			sanPham.setMaSp(maSp);
-			sanPham.setDonGia(donGia);
-			sanPham.setSoLuong(soLuong);
-			sanPham.setDonViTinh(donViTinh);
-			sanPham.setIdLoaiSp(idLoaiSp);
-
-			// Lưu lại thay đổi
-			db.store(sanPham);
-
-			return true;
-		}
-		return false;
-	}
-
-	// Xóa
-	public boolean del(String maSp) {
-		// Lấy dữ liệu
-		SanPham del = getSanPham(maSp);
-		ChiTietPhieuXuat xuat = getChiTietPhieuXuat(maSp);
-		ChiTietPhieuNhap nhap = getChiTietPhieuNhap(maSp);
-		ChiTietPhieuDieuChuyen dieuchuyen = getChiTietPhieuDieuChuyen(maSp);
-
-		// Kiểm tra dữ liệu
-		if (maSp == null || maSp.isEmpty()) {
-			JOptionPane.showMessageDialog(null, "Vui lòng nhập Mã sản phẩm");
-			return false;
-		}
-
-		if (del == null) {
-			JOptionPane.showMessageDialog(null, "Mã chưa tồn tại");
-		}
-
-		if (xuat != null || nhap != null || dieuchuyen != null) {
-			JOptionPane.showMessageDialog(null, "Xóa thất bại: Mã đang được tham chiếu ở các bản ghi liên quan.");
-		}
-
-		int response = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn muốn xóa?", "Xóa dữ liệu",
-				JOptionPane.YES_NO_OPTION);
-		if (response == JOptionPane.YES_OPTION) {
-			db.delete(del);
-			return true;
-		}
-		return false;
-	}
-
-	// Tìm SanPham
-	private SanPham getSanPham(String maSp) {
-		// Tạo truy vấn SODA
-		Query query = db.query();
-		query.constrain(SanPham.class);
-		query.descend("maSp").constrain(maSp);
-		ObjectSet<SanPham> result = query.execute();
-		return result.hasNext() ? result.next() : null;
-	}
-
-	// Tìm SanPham
-	private LoaiSanPham getLoaiSanPham(String loaiSp) {
-		// Tạo truy vấn SODA
-		Query query = db.query();
-		query.constrain(LoaiSanPham.class);
-		query.descend("loaiSp").constrain(loaiSp);
-		ObjectSet<LoaiSanPham> result = query.execute();
-		return result.hasNext() ? result.next() : null;
-	}
-
-	// Tìm ChiTietPhieuNhap
-	private ChiTietPhieuNhap getChiTietPhieuNhap(String maSp) {
-		// Tạo truy vấn SODA
-		Query query = db.query();
-		query.constrain(ChiTietPhieuNhap.class);
-		query.descend("maSp").constrain(maSp);
-		ObjectSet<ChiTietPhieuNhap> result = query.execute();
-		return result.hasNext() ? result.next() : null;
-	}
-
-	// Tìm ChiTietPhieuXuat
-	private ChiTietPhieuXuat getChiTietPhieuXuat(String maSp) {
-		// Tạo truy vấn SODA
-		Query query = db.query();
-		query.constrain(ChiTietPhieuXuat.class);
-		query.descend("maSp").constrain(maSp);
-		ObjectSet<ChiTietPhieuXuat> result = query.execute();
-		return result.hasNext() ? result.next() : null;
-	}
-
-	// Tìm ChiTietPhieuDieuChuyen
-	private ChiTietPhieuDieuChuyen getChiTietPhieuDieuChuyen(String maSp) {
-		// Tạo truy vấn SODA
-		Query query = db.query();
-		query.constrain(ChiTietPhieuDieuChuyen.class);
-		query.descend("maSp").constrain(maSp);
-		ObjectSet<ChiTietPhieuDieuChuyen> result = query.execute();
-		return result.hasNext() ? result.next() : null;
-	}
-
 }

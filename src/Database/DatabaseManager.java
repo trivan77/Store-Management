@@ -137,13 +137,15 @@ public class DatabaseManager {
 		ObjectSet<ChiTietSanPham> chiTietSanPham = db.query(ChiTietSanPham.class);
 		if (chiTietSanPham.size() == 0) {
 			// Thêm dữ liệu ChiTietSanPham
-			db.store(new ChiTietSanPham("SP001", "Sản phẩm 01", "KHO001", "Kho 001", 8));
-			db.store(new ChiTietSanPham("SP002", "Sản phẩm 02", "KHO001", "Kho 001", 8));
-			db.store(new ChiTietSanPham("SP003", "Sản phẩm 03", "KHO001", "Kho 001", 9));
-			db.store(new ChiTietSanPham("SP004", "Sản phẩm 04", "KHO001", "Kho 001", 9));
-			db.store(new ChiTietSanPham("SP005", "Sản phẩm 05", "KHO001", "Kho 001", 9));
-			db.store(new ChiTietSanPham("SP001", "Sản phẩm 01", "KHO002", "Kho 002", 1));
-			db.store(new ChiTietSanPham("SP002", "Sản phẩm 02", "KHO002", "Kho 002", 1));
+			/*
+			 * db.store(new ChiTietSanPham("SP001", "Sản phẩm 01", "KHO001", "Kho 001", 8));
+			 * db.store(new ChiTietSanPham("SP002", "Sản phẩm 02", "KHO001", "Kho 001", 8));
+			 * db.store(new ChiTietSanPham("SP003", "Sản phẩm 03", "KHO001", "Kho 001", 9));
+			 * db.store(new ChiTietSanPham("SP004", "Sản phẩm 04", "KHO001", "Kho 001", 9));
+			 * db.store(new ChiTietSanPham("SP005", "Sản phẩm 05", "KHO001", "Kho 001", 9));
+			 * db.store(new ChiTietSanPham("SP001", "Sản phẩm 01", "KHO002", "Kho 002", 1));
+			 * db.store(new ChiTietSanPham("SP002", "Sản phẩm 02", "KHO002", "Kho 002", 1));
+			 */
 		}
 
 	}

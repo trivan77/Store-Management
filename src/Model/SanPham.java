@@ -15,6 +15,9 @@ public class SanPham {
 		this.donViTinh = donViTinh;
 		this.loaiSp = loaiSp;
 	}
+	
+	public SanPham() {
+	}
 
 	// Getters và Setters cho từng thuộc tính
 
