@@ -3,7 +3,6 @@ package Model;
 public class ChiTietSanPham {
 
 	// Các thuộc tính
-	private String maCtSp; // Mã chi tiết sản phẩm
     private String maSp;      // Mã sản phẩm
     private String maKho;     // Mã kho
     private int soLuong;   // Số lượng
@@ -13,22 +12,13 @@ public class ChiTietSanPham {
     }
 
     // Constructor có tham số
-    public ChiTietSanPham(String maCtSp, String maSp, String maKho, int soLuong) {
-        this.maCtSp = maCtSp;
+    public ChiTietSanPham(String maSp, String maKho, int soLuong) {
         this.maSp = maSp;
         this.maKho = maKho;
         this.soLuong = soLuong;
     }
 
     // Getter và Setter cho maSp
-
-    public String getMaCtSp() {
-		return maCtSp;
-	}
-
-	public void setMaCtSp(String maCtSp) {
-		this.maCtSp = maCtSp;
-	}
 	
     public String getMaSp() {
         return maSp;

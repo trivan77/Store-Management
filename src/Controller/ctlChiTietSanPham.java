@@ -22,12 +22,12 @@ public class ctlChiTietSanPham {
 	}
 
 	// Thêm mới chi tiết sản phẩm
-	public void InsertProductDetail(String ProductDetailID, String storeID, int num) {
-		// Tạo một truy vấn để tìm ChiTietSanPham theo idProductDetail và idStore
+	public void SetChiTietSanPham(String maSp, String maKho, int num) {
+		// Tạo một truy vấn để tìm ChiTietSanPham theo idsanPhamDetail và idStore
 		Query query = db.query();
 		query.constrain(ChiTietSanPham.class);
-		query.descend("maCtSp").constrain(ProductDetailID);
-		query.descend("maKho").constrain(storeID);
+		query.descend("maSp").constrain(maSp);
+		query.descend("maKho").constrain(maKho);
 
 		ObjectSet<ChiTietSanPham> results = query.execute();
 
@@ -39,8 +39,8 @@ public class ctlChiTietSanPham {
 		} else {
 			// Nếu không tìm thấy, tạo một bản ghi mới
 			ChiTietSanPham newChiTietSanPham = new ChiTietSanPham();
-			newChiTietSanPham.setMaCtSp(ProductDetailID);
-			newChiTietSanPham.setMaKho(storeID);
+			newChiTietSanPham.setMaSp(maSp);
+			newChiTietSanPham.setMaKho(maKho);
 			newChiTietSanPham.setSoLuong(num);
 			db.store(newChiTietSanPham); // Lưu bản ghi mới vào db4o
 		}
@@ -48,36 +48,36 @@ public class ctlChiTietSanPham {
 	}
 
 	// List tổng số lượng sản phẩm trên hệ thống => trả ra Map: Tên sản phẩm - Tổng số lượng
-	public Map<String, Integer> GetNumOfProduct() {
+	public Map<String, Integer> GetSoLuongSanPham() {
 		
 		// Bước 1: Tính tổng số lượng của mỗi mã sản phẩm (maSp)
-		ObjectSet<ChiTietSanPham> ListProductDetail = db.query(ChiTietSanPham.class);
-		Map<String, Integer> numOfProduct = new HashMap<>();
+		ObjectSet<ChiTietSanPham> listChiThietSanPham = db.query(ChiTietSanPham.class);
+		Map<String, Integer> mapSoLuong = new HashMap<>();
 
-		for (ChiTietSanPham ctsp : ListProductDetail) {
-			String productID = ctsp.getMaSp();
+		for (ChiTietSanPham ctsp : listChiThietSanPham) {
+			String maSp = ctsp.getMaSp();
 			int num = ctsp.getSoLuong();
-			numOfProduct.put(productID, numOfProduct.getOrDefault(productID, 0) + num);
+			mapSoLuong.put(maSp, mapSoLuong.getOrDefault(maSp, 0) + num);
 		}
 
 		// Bước 2: Truy vấn tên sản phẩm (tenSp) và tạo Map<tenSp, soLuong>
 		Map<String, Integer> result = new HashMap<>();
 
-		for (Map.Entry<String, Integer> entry : numOfProduct.entrySet()) {
-			String productID = entry.getKey();
-			int totalNum = entry.getValue();
+		for (Map.Entry<String, Integer> entry : mapSoLuong.entrySet()) {
+			String maSp = entry.getKey();
+			int soLuong = entry.getValue();
 
 			// Tìm đối tượng SanPham dựa trên maSp để lấy tenSp
 			SanPham sanPhamExample = new SanPham();
-			sanPhamExample.setMaSp(productID);
-			ObjectSet<SanPham> productResults = db.queryByExample(sanPhamExample);
+			sanPhamExample.setMaSp(maSp);
+			ObjectSet<SanPham> sanPhamResults = db.queryByExample(sanPhamExample);
 
-			if (!productResults.isEmpty()) {
-				SanPham product = productResults.get(0);
-				String productName = product.getTenSp();
+			if (!sanPhamResults.isEmpty()) {
+				SanPham sanPham = sanPhamResults.get(0);
+				String tenSp = sanPham.getTenSp();
 
 				// Thêm tenSp và tổng số lượng vào Map kết quả
-				result.put(productName, totalNum);
+				result.put(tenSp, soLuong);
 			}
 		}
 
@@ -85,38 +85,38 @@ public class ctlChiTietSanPham {
 	}
 	
 	// List tổng số lượng sản phẩm trong kho chỉ đinh => trả ra Map: Tên sản phẩm - Tổng số lượng
-	public Map<String, Integer> GetNumOfProduct(String storeID){
+	public Map<String, Integer> GetNumOfsanPham(String storeID){
 		// Bước 1: Lọc các bản ghi ChiTietSanPham theo maKho và tính tổng số lượng cho mỗi maSp
         ChiTietSanPham example = new ChiTietSanPham();
         example.setMaKho(storeID);
         ObjectSet<ChiTietSanPham> chiTietSanPhamResults = db.queryByExample(example);
 
-        Map<String, Integer> numOfProduct = new HashMap<>();
+        Map<String, Integer> numOfsanPham = new HashMap<>();
 
         for (ChiTietSanPham ctsp : chiTietSanPhamResults) {
-            String productID = ctsp.getMaSp();
+            String maSp = ctsp.getMaSp();
             int num = ctsp.getSoLuong();
-            numOfProduct.put(productID, numOfProduct.getOrDefault(productID, 0) + num);
+            numOfsanPham.put(maSp, numOfsanPham.getOrDefault(maSp, 0) + num);
         }
 
         // Bước 2: Truy vấn tên sản phẩm từ bảng SanPham và tạo Map<tenSp, soLuong>
         Map<String, Integer> result = new HashMap<>();
 
-        for (Map.Entry<String, Integer> entry : numOfProduct.entrySet()) {
-            String productID = entry.getKey();
-            int totalNum = entry.getValue();
+        for (Map.Entry<String, Integer> entry : numOfsanPham.entrySet()) {
+            String maSp = entry.getKey();
+            int soLuong = entry.getValue();
 
             // Tìm đối tượng SanPham dựa trên maSp để lấy tenSp
-            SanPham productExample = new SanPham();
-            productExample.setMaSp(productID);
-            ObjectSet<SanPham> productResults = db.queryByExample(productExample);
+            SanPham sanPhamExample = new SanPham();
+            sanPhamExample.setMaSp(maSp);
+            ObjectSet<SanPham> sanPhamResults = db.queryByExample(sanPhamExample);
 
-            if (!productResults.isEmpty()) {
-                SanPham product = productResults.get(0);
-                String productName = product.getTenSp();
+            if (!sanPhamResults.isEmpty()) {
+                SanPham sanPham = sanPhamResults.get(0);
+                String tenSp = sanPham.getTenSp();
 
                 // Thêm tenSp và tổng số lượng vào Map kết quả
-                result.put(productName, totalNum);
+                result.put(tenSp, soLuong);
             }
         }
 
